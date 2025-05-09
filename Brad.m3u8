@@ -1,6 +1,5 @@
 #EXTM3U
 #EXT-X-VERSION:3
-#EXT-X-PLAYLIST-TYPE:event
-# Radio FM stream information
-#EXT-X-STREAM-INF:BANDWIDTH=128000,CODECS="mp4a.40.2"
+#EXT-X-STREAM-INF:BANDWIDTH=800000,RESOLUTION=640x360
+https://mp3semti.com/dinle/Roya-Dusursen-Tez
 https://mp3semti.com/dinle/Roya-Dusursen-Tez
