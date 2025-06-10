@@ -1,6 +1,0 @@
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-STREAM-INF:BANDWIDTH=6096000
-http://iptv.prosto.tv:7000/ch328/video.m3u8b13e78818df0f&user=37076
-#EXT-X-STREAM-INF:BANDWIDTH=796000
-http://iptv.prosto.tv:7000/ch328/video.m3u8
