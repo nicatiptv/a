@@ -1,4 +1,0 @@
-#EXTM3U
-#EXT-X-VERSION:3
-#EXT-X-STREAM-INF:BANDWIDTH=3500000,RESOLUTION=1280x720,FRAME-RATE=50.000,CODECS="avc1.640028,mp4a.40.2"
-https://manifest.googlevideo.com/api/manifest/hls_variant/expire/1749554885/ei/ZcJHaI_7L7XRi9oPxbSN6QY/ip/188.68.234.53/id/gSBZcx5YbH4.2/source/yt_live_broadcast/requiressl/yes/xpc/EgVo2aDSNQ%3D%3D/hfr/1/playlist_duration/30/manifest_duration/30/maudio/1/bui/AY1jyLOYwFPfckxBQlzvDiZ4QpoHO3WyKuxY8kbUMoUBoQ9hFDGxbJG7rcfoPw1D5zQf9fMS4mA1IcJL/spc/l3OVKfjdG5iw6NZ8K6sIlyr2iLSCWKIXwGkgVMgJkcgB2en1yA2mAmN2K8B4cW8pUio/vprv/1/go/1/rqh/5/pacing/0/nvgoi/1/ncsapi/1/keepalive/yes/fexp/51355912/dover/11/itag/0/playlist_type/DVR/sparams/expire%2Cei%2Cip%2Cid%2Csource%2Crequiressl%2Cxpc%2Chfr%2Cplaylist_duration%2Cmanifest_duration%2Cmaudio%2Cbui%2Cspc%2Cvprv%2Cgo%2Crqh%2Citag%2Cplaylist_type/sig/AJfQdSswRgIhAPjnRHH6FAiEpV013PAZlPGnfVT4WQBBS7jMBNaG09QkAiEA00nGAnFeRwZsqR1Al1-vvpVidZXOKBtsJd0bSPZ4ojI%3D/file/index.m3u8
