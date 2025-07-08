@@ -1,9 +1,4 @@
 #EXTM3U
-# AzTV HD
-# Format: MPEG-TS (HLS)
-# Resolution: 1280x720
-# Video Codec: H.264
-# Audio Codec: AAC
-# Frame Rate: 25 fps
-# Bitrate: 1500 kbps
+#EXT-X-VERSION:3
+#EXT-X-STREAM-INF:BANDWIDTH=2096000
 https://koprulu4.global.ssl.fastly.net/ythls/?kanal_id=UCCS7m3Hhyl6dhwGbAkVbc9g.m3u8
