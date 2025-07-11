@@ -3,17 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <title>AzFibernet TV</title>
-  <!-- Video.js CSS -->
-  <link href="https://vjs.zencdn.net/8.10.0/video-js.css" rel="stylesheet" />
-  <!-- videojs-contrib-hls dəstəyi üçün -->
-  <script src="https://vjs.zencdn.net/8.10.0/video.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/videojs-contrib-hls@5.15.0/dist/videojs-contrib-hls.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
   <style>
     body { font-family: Arial; background: #000; color: #fff; padding: 20px; }
     h1 { text-align: center; color: #0ff; }
     select { width: 100%; max-width: 600px; margin: 20px auto; display: block; }
     #player { width: 100%; max-width: 800px; height: 450px; margin: 0 auto; }
-    .video-js { width: 100% !important; height: 450px !important; background: #000; }
+    video { background: #000; width: 100%; height: 450px; display: block; }
   </style>
 </head>
 <body>
@@ -212,24 +208,35 @@
     <option value="http://flussonic.azfiber.net/karusel/video.m3u8">Карусель</option>
   </select>
   <div id="player">
-    <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto" width="800" height="450"></video>
+    <video id="video" controls></video>
   </div>
   <script>
-    var player = videojs('videoPlayer', {
-      autoplay: false,
-      controls: true,
-      preload: 'auto',
-      muted: false,
-      fluid: true
-    });
+    var video = document.getElementById('video');
+    var hls;
 
     function changeChannel(url) {
+      if (hls) {
+        hls.destroy();
+        hls = null;
+      }
       if (url) {
-        player.src({ src: url, type: 'application/x-mpegURL' });
-        player.play();
+        if (Hls.isSupported()) {
+          hls = new Hls();
+          hls.loadSource(url);
+          hls.attachMedia(video);
+          hls.on(Hls.Events.MANIFEST_PARSED, function () {
+            video.play();
+          });
+        } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+          video.src = url;
+          video.play();
+        } else {
+          alert("Brauzeriniz bu stream-i dəstəkləmir!");
+        }
       } else {
-        player.pause();
-        player.src({ src: '', type: '' });
+        video.pause();
+        video.removeAttribute('src');
+        video.load();
       }
     }
   </script>
