@@ -1,0 +1,381 @@
+#EXTM3U
+#EXTINF:-1 tvg-name="Azad Azərbaycan" tvg-id="" group-title="MI",Azad Azərbaycan ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/azadazerbaycan/video.m3u8
+#EXTINF:-1 tvg-name="Xəzər" tvg-id="" group-title="MI",Xəzər ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/xezertv/video.m3u8
+#EXTINF:-1 tvg-name="İctimai TV" tvg-id="" group-title="MI",İctimai TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ictimaitv/video.m3u8
+#EXTINF:-1 tvg-name="ARB TV" tvg-id="" group-title="MI",ARB TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/arb/video.m3u8
+#EXTINF:-1 tvg-name="Space TV" tvg-id="" group-title="MI",Space TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/spacetv/video.m3u8
+#EXTINF:-1 tvg-name="Real TV" tvg-id="" group-title="MI",Real TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/realtv/video.m3u8
+#EXTINF:-1 tvg-name="AzTV" tvg-id="" group-title="MI",AzTV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/aztv/video.m3u8
+#EXTINF:-1 tvg-name="Dunya TV" tvg-id="" group-title="MI",Dunya TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/dunyatv/video.m3u8
+#EXTINF:-1 tvg-name="ARB 24" tvg-id="" group-title="MI",ARB 24 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/arb24/video.m3u8
+#EXTINF:-1 tvg-name="ARB Gunesh" tvg-id="" group-title="MI",ARB Gunesh ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/arbgunesh/video.m3u8
+#EXTINF:-1 tvg-name="MuzTv Azerbaycan" tvg-id="" group-title="MI",MuzTv Azerbaycan ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/muztvaz/video.m3u8
+#EXTINF:-1 tvg-name="TMB TV" tvg-id="" group-title="MI",TMB TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tmb/video.m3u8
+#EXTINF:-1 tvg-name="CBC Sport HD" tvg-id="" group-title="MI",CBC Sport HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/cbcsporthd/video.m3u8
+#EXTINF:-1 tvg-name="CBC TV AZERBAYCAN" tvg-id="" group-title="MI",CBC TV AZERBAYCAN ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/cbc/video.m3u8
+#EXTINF:-1 tvg-name="Sehiyye TV" tvg-id="" group-title="MI",Sehiyye TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/sehiyye/video.m3u8
+#EXTINF:-1 tvg-name="TRT 1" tvg-id="" group-title="MI",TRT 1 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/trt1/video.m3u8
+#EXTINF:-1 tvg-name="TRT AVAZ" tvg-id="" group-title="MI",TRT AVAZ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/trtavaz/video.m3u8
+#EXTINF:-1 tvg-name="TRT Belgesel" tvg-id="" group-title="MI",TRT Belgesel ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/trtbelgesel/video.m3u8
+#EXTINF:-1 tvg-name="Show TV" tvg-id="" group-title="MI",Show TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/showtv/video.m3u8
+#EXTINF:-1 tvg-name="Star TV HD" tvg-id="" group-title="MI",Star TV HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/starhd/video.m3u8
+#EXTINF:-1 tvg-name="Star TV" tvg-id="" group-title="MI",Star TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/startv/video.m3u8
+#EXTINF:-1 tvg-name="KANAL D" tvg-id="" group-title="MI",KANAL D ⁿⁱᶜᵃᵗ
+https://demiroren-live.daioncdn.net/kanald/kanald_1080p.m3u8
+#EXTINF:-1 tvg-name="EURO D HD" tvg-id="" group-title="MI",EURO D HD ⁿⁱᶜᵃᵗ
+https://live.duhnet.tv/S2/HLS_LIVE/eurodnp/playlist.m3u8
+#EXTINF:-1 tvg-name="DMAX TR" tvg-id="" group-title="MI",DMAX TR ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ntvsport/video.m3u8
+#EXTINF:-1 tvg-name="TV8" tvg-id="" group-title="MI",TV8 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv8/video.m3u8
+#EXTINF:-1 tvg-name="TV 8 Int" tvg-id="" group-title="MI",TV 8 Int ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv8int/video.m3u8
+#EXTINF:-1 tvg-name="TLC Turk" tvg-id="" group-title="MI",TLC Turk ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tlcturk/video.m3u8
+#EXTINF:-1 tvg-name="EuroSport 1" tvg-id="" group-title="MI",EuroSport 1 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/eurosport/video.m3u8
+#EXTINF:-1 tvg-name="EuroSport 2" tvg-id="" group-title="MI",EuroSport 2 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/eurosport2/video.m3u8
+#EXTINF:-1 tvg-name="EuroNews" tvg-id="" group-title="MI",EuroNews ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/euronews/video.m3u8
+#EXTINF:-1 tvg-name="TV1000" tvg-id="" group-title="MI",TV1000 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv1000/video.m3u8
+#EXTINF:-1 tvg-name="VIP Megahit HD" tvg-id="" group-title="MI",VIP Megahit HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/VIPMegahitHD/video.m3u8
+#EXTINF:-1 tvg-name="TV1000 Action" tvg-id="" group-title="MI",TV1000 Action ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv1000action/video.m3u8
+#EXTINF:-1 tvg-name="VIP Premiere HD" tvg-id="" group-title="MI",VIP Premiere HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/VIPPremiereHD/video.m3u8
+#EXTINF:-1 tvg-name="VIP Comedy HD" tvg-id="" group-title="MI",VIP Comedy HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/VIPComedyHD/video.m3u8
+#EXTINF:-1 tvg-name="Amedia 1" tvg-id="" group-title="MI",Amedia 1 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/amedia1/video.m3u8
+#EXTINF:-1 tvg-name="Amedia 2" tvg-id="" group-title="MI",Amedia 2 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/amedia2/video.m3u8
+#EXTINF:-1 tvg-name="History Channel" tvg-id="" group-title="MI",History Channel ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/history/video.m3u8
+#EXTINF:-1 tvg-name="Viasat History" tvg-id="" group-title="MI",Viasat History ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/viasathistory/video.m3u8
+#EXTINF:-1 tvg-name="Sony Turbo" tvg-id="" group-title="MI",Sony Turbo ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/sonyturbo/video.m3u8
+#EXTINF:-1 tvg-name="RTG" tvg-id="" group-title="MI",RTG ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rtg/video.m3u8
+#EXTINF:-1 tvg-name="Discovery Channel" tvg-id="" group-title="MI",Discovery Channel ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/discoverychannel/video.m3u8
+#EXTINF:-1 tvg-name="National Geographic" tvg-id="" group-title="MI",National Geographic ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nationalgeographic/video.m3u8
+#EXTINF:-1 tvg-name="Viasat Nature" tvg-id="" group-title="MI",Viasat Nature ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/viasatnature/video.m3u8
+#EXTINF:-1 tvg-name="VH1 Europe" tvg-id="" group-title="MI",VH1 Europe ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/vh1europe/video.m3u8
+#EXTINF:-1 tvg-name="Discovery Turbo Extra" tvg-id="" group-title="MI",Discovery Turbo Extra ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/dtx/video.m3u8
+#EXTINF:-1 tvg-name="Viva" tvg-id="" group-title="MI",Viva ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/vivatv/video.m3u8
+#EXTINF:-1 tvg-name="Cartoon Network Turkiye" tvg-id="" group-title="MI",Cartoon Network Turkiye ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/cartoonnetworkturk/video.m3u8
+#EXTINF:-1 tvg-name="Extreme Sports" tvg-id="" group-title="MI",Extreme Sports ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/extremesport/video.m3u8
+#EXTINF:-1 tvg-name="OSN Sport" tvg-id="" group-title="MI",OSN Sport ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/osnsports/video.m3u8
+#EXTINF:-1 tvg-name="Bridge TB" tvg-id="" group-title="MI",Bridge TB ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/bridgetv/video.m3u8
+#EXTINF:-1 tvg-name="Da Vinci Learning" tvg-id="" group-title="MI",Da Vinci Learning ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/davinchilearning/video.m3u8
+#EXTINF:-1 tvg-name="BBC World News" tvg-id="" group-title="MI",BBC World News ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/bbcworld/video.m3u8
+#EXTINF:-1 tvg-name="TLC" tvg-id="" group-title="MI",TLC ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tlc/video.m3u8
+#EXTINF:-1 tvg-name="Investigation Discovery" tvg-id="" group-title="MI",Investigation Discovery ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/idextra/video.m3u8
+#EXTINF:-1 tvg-name="OSN Movies" tvg-id="" group-title="MI",OSN Movies ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/osnmovies/video.m3u8
+#EXTINF:-1 tvg-name="VH1 Classic" tvg-id="" group-title="MI",VH1 Classic ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/vh1classic/video.m3u8
+#EXTINF:-1 tvg-name="Mezzo" tvg-id="" group-title="MI",Mezzo ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mezzo/video.m3u8
+#EXTINF:-1 tvg-name="Bollywood TV" tvg-id="" group-title="MI",Bollywood TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/bollywoodtv/video.m3u8
+#EXTINF:-1 tvg-name="Sony SCI-FI" tvg-id="" group-title="MI",Sony SCI-FI ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/sonyscifi/video.m3u8
+#EXTINF:-1 tvg-name="CBS Reality" tvg-id="" group-title="MI",CBS Reality ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/cbsreality/video.m3u8
+#EXTINF:-1 tvg-name="Travel Channel" tvg-id="" group-title="MI",Travel Channel ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/travelchannel/video.m3u8
+#EXTINF:-1 tvg-name="2x2" tvg-id="" group-title="MI",2x2 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/2x2/video.m3u8
+#EXTINF:-1 tvg-name="TV XXI" tvg-id="" group-title="MI",TV XXI ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv21/video.m3u8
+#EXTINF:-1 tvg-name="S TV" tvg-id="" group-title="MI",S TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/stv/video.m3u8
+#EXTINF:-1 tvg-name="Kral Pop" tvg-id="" group-title="MI",Kral Pop ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kralpop/video.m3u8
+#EXTINF:-1 tvg-name="Jim Jam" tvg-id="" group-title="MI",Jim Jam ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/jimjam/video.m3u8
+#EXTINF:-1 tvg-name="Discovery Science" tvg-id="" group-title="MI",Discovery Science ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/discoveryscience/video.m3u8
+#EXTINF:-1 tvg-name="Minika Go" tvg-id="" group-title="MI",Minika Go ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/minikago/video.m3u8
+#EXTINF:-1 tvg-name="Nat Geo Wild" tvg-id="" group-title="MI",Nat Geo Wild ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/natgeowild/video.m3u8
+#EXTINF:-1 tvg-name="Amedia Premium" tvg-id="" group-title="MI",Amedia Premium ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/AmediaPremium/video.m3u8
+#EXTINF:-1 tvg-name="Amedia Hit" tvg-id="" group-title="MI",Amedia Hit ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/amediahit/video.m3u8
+#EXTINF:-1 tvg-name="MTV Rocks" tvg-id="" group-title="MI",MTV Rocks ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mtvrocks/video.m3u8
+#EXTINF:-1 tvg-name="Ru TV" tvg-id="" group-title="MI",Ru TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rutv/video.m3u8
+#EXTINF:-1 tvg-name="Disney Channel" tvg-id="" group-title="MI",Disney Channel ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/disneyru/video.m3u8
+#EXTINF:-1 tvg-name="Animal Planet" tvg-id="" group-title="MI",Animal Planet ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/animalplanet/video.m3u8
+#EXTINF:-1 tvg-name="Gulli Girl" tvg-id="" group-title="MI",Gulli Girl ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/gulligirl/video.m3u8
+#EXTINF:-1 tvg-name="Viasat Sport" tvg-id="" group-title="MI",Viasat Sport ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/viasatsport/video.m3u8
+#EXTINF:-1 tvg-name="TV2" tvg-id="" group-title="MI",TV2 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv2/video.m3u8
+#EXTINF:-1 tvg-name="Music Box RU" tvg-id="" group-title="MI",Music Box RU ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/musicboxru/video.m3u8
+#EXTINF:-1 tvg-name="Paramount Comedy" tvg-id="" group-title="MI",Paramount Comedy ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/paramauntcomedy/video.m3u8
+#EXTINF:-1 tvg-name="Fox Life" tvg-id="" group-title="MI",Fox Life ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/foxlife/video.m3u8
+#EXTINF:-1 tvg-name="Viasat Explorer" tvg-id="" group-title="MI",Viasat Explorer ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/viasatexplorer/video.m3u8
+#EXTINF:-1 tvg-name="HabarTurk" tvg-id="" group-title="MI",HabarTurk ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/haberturk/video.m3u8
+#EXTINF:-1 tvg-name="MCM Top" tvg-id="" group-title="MI",MCM Top ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mcmtop/video.m3u8
+#EXTINF:-1 tvg-name="Sony TV" tvg-id="" group-title="MI",Sony TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/sonytv/video.m3u8
+#EXTINF:-1 tvg-name="CNN TURK" tvg-id="" group-title="MI",CNN TURK ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/cnnturk/video.m3u8
+#EXTINF:-1 tvg-name="Mədəniyyət TV" tvg-id="" group-title="MI",Mədəniyyət TV ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/medeniyyet/video.m3u8
+#EXTINF:-1 tvg-name="İdman Azərbaycan" tvg-id="" group-title="MI",İdman Azərbaycan ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/idmanaz/video.m3u8
+#EXTINF:-1 tvg-name="ATV Türkiye HD" tvg-id="" group-title="MI",ATV Türkiye HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/atvhd/video.m3u8
+#EXTINF:-1 tvg-name="ATV Türkiye" tvg-id="" group-title="MI",ATV Türkiye ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/atvturk/video.m3u8
+#EXTINF:-1 tvg-name="Матч ТВ" tvg-id="" group-title="MI",Матч ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/matchtv/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 1" tvg-id="" group-title="MI",Матч! Футбол 1 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/futbol1/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 2" tvg-id="" group-title="MI",Матч! Футбол 2 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/futbol2/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 3" tvg-id="" group-title="MI",Матч! Футбол 3 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/futbol3/video.m3u8
+#EXTINF:-1 tvg-name="Наш Футбол" tvg-id="" group-title="MI",Наш Футбол ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nashfutbol/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Арена" tvg-id="" group-title="MI",Матч! Арена ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/matcharena/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Наш Спорт" tvg-id="" group-title="MI",Матч! Наш Спорт ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nashsport/video.m3u8
+#EXTINF:-1 tvg-name="Футбол" tvg-id="" group-title="MI",Футбол ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/futbol/video.m3u8
+#EXTINF:-1 tvg-name="Первый канал" tvg-id="" group-title="MI",Первый канал ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/perviy/video.m3u8
+#EXTINF:-1 tvg-name="РБК" tvg-id="" group-title="MI",РБК ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rbk/video.m3u8
+#EXTINF:-1 tvg-name="Россия 1" tvg-id="" group-title="MI",Россия 1 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rossiya1/video.m3u8
+#EXTINF:-1 tvg-name="Россия 24" tvg-id="" group-title="MI",Россия 24 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rosiyya24/video.m3u8
+#EXTINF:-1 tvg-name="Россия К" tvg-id="" group-title="MI",Россия К ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rossiakultura/video.m3u8
+#EXTINF:-1 tvg-name="РТР Планета" tvg-id="" group-title="MI",РТР Планета ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rtrplaneta/video.m3u8
+#EXTINF:-1 tvg-name="НТВ" tvg-id="" group-title="MI",НТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ntvplus/video.m3u8
+#EXTINF:-1 tvg-name="Звезда" tvg-id="" group-title="MI",Звезда ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/zvezda/video.m3u8
+#EXTINF:-1 tvg-name="ТВ-3" tvg-id="" group-title="MI",ТВ-3 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv3/video.m3u8
+#EXTINF:-1 tvg-name="Че" tvg-id="" group-title="MI",Че ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ce/video.m3u8
+#EXTINF:-1 tvg-name="РЕН ТВ" tvg-id="" group-title="MI",РЕН ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rentv/video.m3u8
+#EXTINF:-1 tvg-name="Мир ТВ" tvg-id="" group-title="MI",Мир ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mir/video.m3u8
+#EXTINF:-1 tvg-name="Мир 24" tvg-id="" group-title="MI",Мир 24 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mir24/video.m3u8
+#EXTINF:-1 tvg-name="Мир сериала" tvg-id="" group-title="MI",Мир сериала ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mirseriala/video.m3u8
+#EXTINF:-1 tvg-name="ТНТ" tvg-id="" group-title="MI",ТНТ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tnt/video.m3u8
+#EXTINF:-1 tvg-name="ТНТ4" tvg-id="" group-title="MI",ТНТ4 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tntcomedy/video.m3u8
+#EXTINF:-1 tvg-name="СТС" tvg-id="" group-title="MI",СТС ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ctc/video.m3u8
+#EXTINF:-1 tvg-name="Домашний" tvg-id="" group-title="MI",Домашний ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/domashniy/video.m3u8
+#EXTINF:-1 tvg-name="Ю-ТВ" tvg-id="" group-title="MI",Ю-ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/yutv/video.m3u8
+#EXTINF:-1 tvg-name="Пятница!" tvg-id="" group-title="MI",Пятница! ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/pyatnicha/video.m3u8
+#EXTINF:-1 tvg-name="5 канал" tvg-id="" group-title="MI",5 канал ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/5kanal/video.m3u8
+#EXTINF:-1 tvg-name="ТВ Центр" tvg-id="" group-title="MI",ТВ Центр ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tvc/video.m3u8
+#EXTINF:-1 tvg-name="Русский Иллюзион" tvg-id="" group-title="MI",Русский Иллюзион ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/russkiyiluzion/video.m3u8
+#EXTINF:-1 tvg-name="TV1000 Русское кино" tvg-id="" group-title="MI",TV1000 Русское кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tv1000ruskoekino/video.m3u8
+#EXTINF:-1 tvg-name="Индийское кино" tvg-id="" group-title="MI",Индийское кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/indiskoekino/video.m3u8
+#EXTINF:-1 tvg-name="Кинокомедия" tvg-id="" group-title="MI",Кинокомедия ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinokomedia/video.m3u8
+#EXTINF:-1 tvg-name="Киносвидание" tvg-id="" group-title="MI",Киносвидание ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinosvidanie/video.m3u8
+#EXTINF:-1 tvg-name="Кинохит" tvg-id="" group-title="MI",Кинохит ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinoxit/video.m3u8
+#EXTINF:-1 tvg-name="Киномикс" tvg-id="" group-title="MI",Киномикс ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinomiks/video.m3u8
+#EXTINF:-1 tvg-name="Наше Новое Кино" tvg-id="" group-title="MI",Наше Новое Кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nashenovoekino/video.m3u8
+#EXTINF:-1 tvg-name="Мужское кино" tvg-id="" group-title="MI",Мужское кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mkino/video.m3u8
+#EXTINF:-1 tvg-name="Киносерия" tvg-id="" group-title="MI",Киносерия ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinoseria/video.m3u8
+#EXTINF:-1 tvg-name="Киносемья" tvg-id="" group-title="MI",Киносемья ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinosemya/video.m3u8
+#EXTINF:-1 tvg-name="Родное кино" tvg-id="" group-title="MI",Родное кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/rodnoekino/video.m3u8
+#EXTINF:-1 tvg-name="Кинопремьера HD" tvg-id="" group-title="MI",Кинопремьера HD ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinopremerahd/video.m3u8
+#EXTINF:-1 tvg-name="Еврокино" tvg-id="" group-title="MI",Еврокино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/eurokino/video.m3u8
+#EXTINF:-1 tvg-name="Живая Планета" tvg-id="" group-title="MI",Живая Планета ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/jivayaplaneta/video.m3u8
+#EXTINF:-1 tvg-name="Охота и рыбалка" tvg-id="" group-title="MI",Охота и рыбалка ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/oxotoiribalka/video.m3u8
+#EXTINF:-1 tvg-name="Домашние животные" tvg-id="" group-title="MI",Домашние животные ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/domashniejivotnie/video.m3u8
+#EXTINF:-1 tvg-name="Зоопарк" tvg-id="" group-title="MI",Зоопарк ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/zoopark/video.m3u8
+#EXTINF:-1 tvg-name="Муз ТВ" tvg-id="" group-title="MI",Муз ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/muztv/video.m3u8
+#EXTINF:-1 tvg-name="Музыка Первого" tvg-id="" group-title="MI",Музыка Первого ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/muzika1/video.m3u8
+#EXTINF:-1 tvg-name="Шансон ТВ" tvg-id="" group-title="MI",Шансон ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/shanson/video.m3u8
+#EXTINF:-1 tvg-name="СТС Love" tvg-id="" group-title="MI",СТС Love ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ctclove/video.m3u8
+#EXTINF:-1 tvg-name="MTV RUSSIA¹" tvg-id="" group-title="MI",MTV RUSSIA¹ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mtvRUSSIA¹/video.m3u8
+#EXTINF:-1 tvg-name="Ля минор" tvg-id="" group-title="MI",Ля минор ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/lyaminor/video.m3u8
+#EXTINF:-1 tvg-name="БОБЁР ТВ" tvg-id="" group-title="MI",БОБЁР ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/bobertv/video.m3u8
+#EXTINF:-1 tvg-name="Ностальгия" tvg-id="" group-title="MI",Ностальгия ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nostalgiya/video.m3u8
+#EXTINF:-1 tvg-name="Первый образовательный" tvg-id="" group-title="MI",Первый образовательный ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/perviyobrazovatelny/video.m3u8
+#EXTINF:-1 tvg-name="Время" tvg-id="" group-title="MI",Время ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/vremya/video.m3u8
+#EXTINF:-1 tvg-name="Ani ТВ" tvg-id="" group-title="MI",Ani ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/anitv/video.m3u8
+#EXTINF:-1 tvg-name="Disney Channel Türkiye" tvg-id="" group-title="MI",Disney Channel Türkiye ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/disneychannelturk/video.m3u8
+#EXTINF:-1 tvg-name="Телеканал Комедия" tvg-id="" group-title="MI",Телеканал Комедия ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/telekanalkomedia/video.m3u8
+#EXTINF:-1 tvg-name="Кино ТВ" tvg-id="" group-title="MI",Кино ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kinotv/video.m3u8
+#EXTINF:-1 tvg-name="Совершенно секретно" tvg-id="" group-title="MI",Совершенно секретно ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/sovershennosekretno/video.m3u8
+#EXTINF:-1 tvg-name="Кто есть кто" tvg-id="" group-title="MI",Кто есть кто ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ktoestkto/video.m3u8
+#EXTINF:-1 tvg-name="История" tvg-id="" group-title="MI",История ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/istoriya/video.m3u8
+#EXTINF:-1 tvg-name="24 Док" tvg-id="" group-title="MI",24 Док ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/24dok/video.m3u8
+#EXTINF:-1 tvg-name="Телекафе" tvg-id="" group-title="MI",Телекафе ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/telekafe/video.m3u8
+#EXTINF:-1 tvg-name="Европа Плюс ТВ" tvg-id="" group-title="MI",Европа Плюс ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/europaplus/video.m3u8
+#EXTINF:-1 tvg-name="Загородная жизнь" tvg-id="" group-title="MI",Загородная жизнь ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/zaqorodnayajizn/video.m3u8
+#EXTINF:-1 tvg-name="FOX RUSSIA¹" tvg-id="" group-title="MI",FOX RUSSIA¹ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/foxRUSSIA¹/video.m3u8
+#EXTINF:-1 tvg-name="ТДК" tvg-id="" group-title="MI",ТДК ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tdk/video.m3u8
+#EXTINF:-1 tvg-name="КХЛ ТВ" tvg-id="" group-title="MI",КХЛ ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kxltv/video.m3u8
+#EXTINF:-1 tvg-name="Детский" tvg-id="" group-title="MI",Детский ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/detskiy/video.m3u8
+#EXTINF:-1 tvg-name="НСТВ" tvg-id="" group-title="MI",НСТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nst/video.m3u8
+#EXTINF:-1 tvg-name="Иллюзион+" tvg-id="" group-title="MI",Иллюзион+ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/illuzion/video.m3u8
+#EXTINF:-1 tvg-name="Русский Бестселлер" tvg-id="" group-title="MI",Русский Бестселлер ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/russkiybetseller/video.m3u8
+#EXTINF:-1 tvg-name="TRT Türk" tvg-id="" group-title="MI",TRT Türk ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/trtturk/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Планета" tvg-id="" group-title="MI",Матч! Планета ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/machplaneta/video.m3u8
+#EXTINF:-1 tvg-name="365 дней" tvg-id="" group-title="MI",365 дней ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/365dney/video.m3u8
+#EXTINF:-1 tvg-name="Моя Планета" tvg-id="" group-title="MI",Моя Планета ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/moyaplaneta/video.m3u8
+#EXTINF:-1 tvg-name="Русский Экстрим" tvg-id="" group-title="MI",Русский Экстрим ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/ruskiyextrim/video.m3u8
+#EXTINF:-1 tvg-name="Мульт" tvg-id="" group-title="MI",Мульт ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/mult/video.m3u8
+#EXTINF:-1 tvg-name="Кухня ТВ" tvg-id="" group-title="MI",Кухня ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/kuxnyatv/video.m3u8
+#EXTINF:-1 tvg-name="Детский Мир" tvg-id="" group-title="MI",Детский Мир ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/detskiymir/video.m3u8
+#EXTINF:-1 tvg-name="Бокс ТВ" tvg-id="" group-title="MI",Бокс ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/bokstv/video.m3u8
+#EXTINF:-1 tvg-name="Любимое кино" tvg-id="" group-title="MI",Любимое кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/lubimoekino/video.m3u8
+#EXTINF:-1 tvg-name="Наука 2.0" tvg-id="" group-title="MI",Наука 2.0 ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/nauka/video.m3u8
+#EXTINF:-1 tvg-name="Дом кино" tvg-id="" group-title="MI",Дом кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/domkino/video.m3u8
+#EXTINF:-1 tvg-name="Матч! Боец" tvg-id="" group-title="MI",Матч! Боец ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/boets/video.m3u8
+#EXTINF:-1 tvg-name="TİJİ" tvg-id="" group-title="MI",TİJİ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/tiji/video.m3u8
+#EXTINF:-1 tvg-name="Живи!" tvg-id="" group-title="MI",Живи! ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/jivi/video.m3u8
+#EXTINF:-1 tvg-name="Эгоист ТВ" tvg-id="" group-title="MI",Эгоист ТВ ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/egoisttv/video.m3u8
+#EXTINF:-1 tvg-name="24 Техно" tvg-id="" group-title="MI",24 Техно ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/24texno/video.m3u8
+#EXTINF:-1 tvg-name="Парк Развлечений" tvg-id="" group-title="MI",Парк Развлечений ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/parkrasvleceniy/video.m3u8
+#EXTINF:-1 tvg-name="Хорошее Кино" tvg-id="" group-title="MI",Хорошее Кино ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/xoroshoekino/video.m3u8
+#EXTINF:-1 tvg-name="Русский Роман" tvg-id="" group-title="MI",Русский Роман ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/russkiyroman/video.m3u8
+#EXTINF:-1 tvg-name="TRT Çocuk" tvg-id="" group-title="MI",TRT Çocuk ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/trtcocuk/video.m3u8
+#EXTINF:-1 tvg-name="Мультимания" tvg-id="" group-title="MI",Мультимания ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/multmania/video.m3u8
+#EXTINF:-1 tvg-name="Карусель" tvg-id="" group-title="MI",Карусель ⁿⁱᶜᵃᵗ
+http://flussonic.azfiber.net/karusel/video.m3u8
