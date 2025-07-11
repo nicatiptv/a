@@ -2,14 +2,16 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
-  <title>AzFibernet TV</title>
+  <title>AzFibernet TV (Plyr + Hls.js)</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.css" />
   <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js"></script>
   <style>
     body { font-family: Arial; background: #000; color: #fff; padding: 20px; }
     h1 { text-align: center; color: #0ff; }
     select { width: 100%; max-width: 600px; margin: 20px auto; display: block; }
     #player { width: 100%; max-width: 800px; height: 450px; margin: 0 auto; }
-    video { background: #000; width: 100%; height: 450px; display: block; }
+    .plyr__video-embed, video { width: 100% !important; height: 450px !important; background: #000; }
   </style>
 </head>
 <body>
@@ -208,11 +210,13 @@
     <option value="http://flussonic.azfiber.net/karusel/video.m3u8">Карусель</option>
   </select>
   <div id="player">
-    <video id="video" controls></video>
+    <video id="video" playsinline controls></video>
   </div>
   <script>
-    var video = document.getElementById('video');
-    var hls;
+    const video = document.getElementById('video');
+    const player = new Plyr(video, { ratio: '16:9', autoplay: false });
+
+    let hls;
 
     function changeChannel(url) {
       if (hls) {
