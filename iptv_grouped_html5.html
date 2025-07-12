@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>IPTV Bölməli</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+  <style>
+    body { font-family: Arial; background: #111; color: white; padding: 20px; }
+    h1 { text-align: center; color: #0ff; }
+    select, video { width: 100%; max-width: 800px; margin: 10px auto; display: block; }
+  </style>
+</head>
+<body>
+  <h1>📺 IPTV Kanalları (Bölməli)</h1>
+
+  <label for="groupSelect">📂 Bölmə seç:</label>
+  <select id="groupSelect" onchange="populateChannels()">
+    <option value="">-- Bölmə Seçin --</option>
+    <option value="İdman">İdman</option>
+<option value="Uşaq">Uşaq</option>
+<option value="Filmlər">Filmlər</option>
+  </select>
+
+  <label for="channelSelect">📺 Kanal seç:</label>
+  <select id="channelSelect" onchange="changeChannel(this.value)">
+    <option value="">-- Kanal Seçin --</option>
+  </select>
+
+  <video id="video" controls autoplay></video>
+
+  <script>
+    const channelsByGroup = {"İdman": [("CBC Sport", "http://example.com/cbcsport.m3u8"), ("İdman Azərbaycan", "http://example.com/idmanaz.m3u8")], "Uşaq": [("KidZone", "http://example.com/kidzone.m3u8"), ("Cartoon Network", "http://example.com/cartoon.m3u8")], "Filmlər": [("Film TV", "http://example.com/filmtv.m3u8"), ("Cinema AZ", "http://example.com/cinemaaz.m3u8")]};
+
+    function populateChannels() {
+      const group = document.getElementById("groupSelect").value;
+      const channelSelect = document.getElementById("channelSelect");
+      channelSelect.innerHTML = '<option value="">-- Kanal Seçin --</option>';
+      if (channelsByGroup[group]) {
+        channelsByGroup[group].forEach(([name, url]) => {
+          const option = document.createElement("option");
+          option.value = url;
+          option.textContent = name;
+          channelSelect.appendChild(option);
+        });
+      }
+    }
+
+    var video = document.getElementById('video');
+    var hls;
+
+    function changeChannel(url) {
+      if (!url) return;
+      if (Hls.isSupported()) {
+        if (hls) hls.destroy();
+        hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+        video.addEventListener('loadedmetadata', function () {
+          video.play();
+        });
+      }
+    }
+  </script>
+</body>
+</html>
