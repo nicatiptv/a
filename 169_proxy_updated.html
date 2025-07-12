@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>IPTV Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://unpkg.com/video.js@7.15.4/dist/video-js.min.css" rel="stylesheet" />
+  <script src="https://unpkg.com/video.js@7.15.4/dist/video.min.js"></script>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: black;
+      color: white;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    #player-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .video-js {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain;
+    }
+
+    #channelName, #clock {
+      position: absolute;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 5px 10px;
+      border-radius: 5px;
+      z-index: 10;
+      pointer-events: none; /* Metin kutularının tıklamayı engellememesi için */
+    }
+
+    #channelName { top: 10px; left: 10px; }
+    #clock { top: 10px; right: 10px; }
+
+    #channelList {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.95);
+      overflow-y: auto;
+      display: none;
+      z-index: 20;
+    }
+
+    .list-item {
+      padding: 15px;
+      font-size: 20px;
+      border-bottom: 1px solid #333;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .list-item:hover,
+    .list-item.active {
+      background: #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="player-container">
+    <video id="videoPlayer" class="video-js vjs-default-skin" controls preload="auto"></video>
+    <div id="channelName">Yüklənir...</div>
+    <div id="clock"></div>
+  </div>
+
+  <div id="channelList"></div>
+
+  <script>
+    const video = videojs('videoPlayer');
+    const playerContainer = document.getElementById('player-container');
+    const channelListDiv = document.getElementById('channelList');
+    const channelNameDisplay = document.getElementById('channelName');
+
+    let channelData = [];
+    let currentIndex = 0; // Oynatılan kanalın indeksi
+    let listVisible = false;
+    let selectedListIndex = 0; // Kanal listesinde seçili olan öğenin indeksi
+
+    function updateClock() {
+      const now = new Date();
+      document.getElementById('clock').innerText = now.toLocaleString('az-AZ', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    setInterval(updateClock, 1000);
+    updateClock();
+
+    // M3U8 dosyasını yükle
+    // BURAYA KENDİ M3U8 KANAL LİSTESİ URL'NİZİ YAPIŞTIRIN!
+    const m3u8Url = 'https://vettelchannel-trgoals.hf.space/proxy/m3u?url=https://nicatiptv.github.io/a/list.m3u8'; 
+
+    fetch(m3u8Url)
+      .then(res => {
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return res.text();
+      })
+      .then(data => {
+        const lines = data.split('\n');
+        let channel = {};
+        lines.forEach(line => {
+          if (line.startsWith('#EXTINF')) {
+            let name = 'Bilinmeyen Kanal'; 
+
+            // #EXTINF satırından kanal adını çekmek için en basit yöntem: son virgülden sonraki her şeyi al
+            const commaIndex = line.lastIndexOf(',');
+            if (commaIndex !== -1) {
+              name = line.substring(commaIndex + 1).trim();
+              if (!name) { // Eğer virgülden sonra boşsa veya sadece boşluk varsa
+                // tvg-name özelliğini ara (eğer varsa)
+                const tvgNameMatch = line.match(/tvg-name="([^"]+)"/);
+                if (tvgNameMatch && tvgNameMatch[1]) {
+                  name = tvgNameMatch[1].trim();
+                }
+              }
+            } else {
+                 // Eğer #EXTINF satırında virgül yoksa, tvg-name ara
+                 const tvgNameMatch = line.match(/tvg-name="([^"]+)"/);
+                 if (tvgNameMatch && tvgNameMatch[1]) {
+                   name = tvgNameMatch[1].trim();
+                 }
+            }
+            channel = { name: name };
+          } else if (line.startsWith('http')) {
+            channel.url = line.trim();
+            // Kanal adı hala belirlenmemişse (varsayılan 'Bilinmeyen Kanal' ise) ve bir URL varsa, URL'den bir isim türetmeye çalış
+            if (channel.name === 'Bilinmeyen Kanal' || !channel.name) {
+                const urlParts = channel.url.split('/');
+                let inferredName = urlParts[urlParts.length - 1].split('.')[0]; // Dosya adını al
+                inferredName = inferredName.replace(/[-_]/g, ' ').replace(/\b\w/g, char => char.toUpperCase()); // Okunabilir hale getir
+                if (inferredName && inferredName.length > 1) { // Boş veya çok kısa isimlerden kaçın
+                    channel.name = inferredName;
+                } else {
+                    channel.name = 'Kanal (URL Kaynaklı)'; // Daha spesifik bir bilinmeyen kanal
+                }
+            }
+
+            if (channel.name && channel.url) { // Hem ad hem URL varsa kanalı ekle
+              channelData.push(channel);
+            }
+            channel = {}; // Bir sonraki kanal için sıfırla
+          }
+        });
+
+        showChannels();
+        if (channelData.length > 0) {
+          playChannel(channelData[0]);
+        } else {
+          channelNameDisplay.innerText = "Kanal listesi bulunamadı veya boş. M3U8 formatını kontrol edin.";
+        }
+      })
+      .catch(error => {
+        console.error("M3U8 dosyası yüklenirken veya işlenirken hata oluştu:", error);
+        channelNameDisplay.innerText = `Kanal listesi yüklenemedi: ${error.message}. Konsolu kontrol edin.`;
+      });
+
+    // Kanalı oynat
+    function playChannel(ch) {
+      if (!ch || !ch.url) {
+        console.warn("Geçersiz kanal bilgisi veya URL eksik:", ch);
+        channelNameDisplay.innerText = "Kanal oynatılamıyor: Geçersiz URL";
+        return;
+      }
+      video.src({ src: ch.url, type: 'application/x-mpegURL' });
+      video.play().catch(error => {
+        console.error("Video oynatma hatası:", error);
+        // HLS kaynakları için video.js'in hls.js eklentisine ihtiyacı olabilir (örneğin videojs-contrib-hls)
+        channelNameDisplay.innerText = `${ch.name} oynatılamıyor. Desteklenen bir format mı? (Konsolu kontrol edin)`;
+      });
+      channelNameDisplay.innerText = ch.name;
+      currentIndex = channelData.indexOf(ch);
+      highlightActive(currentIndex); // Oynatılan kanalı listede vurgula
+    }
+
+    // Kanal listesini oluştur ve göster
+    function showChannels() {
+      channelListDiv.innerHTML = '';
+      channelData.forEach((ch, idx) => {
+        const item = document.createElement('div');
+        item.className = 'list-item';
+        item.innerText = ch.name;
+        item.dataset.index = idx; // Kanal indeksini kaydet
+
+        // Fare tıklaması veya dokunma ile kanal oynatma
+        item.addEventListener('click', () => {
+          playChannel(ch);
+          toggleChannelList(false);
+        });
+
+        channelListDiv.appendChild(item);
+      });
+    }
+
+    // Kanal listesinin görünürlüğünü ayarla
+    function toggleChannelList(show) {
+      listVisible = show;
+      channelListDiv.style.display = show ? 'block' : 'none';
+      if (show) {
+        selectedListIndex = currentIndex; // Listeyi açtığında oynatılan kanalı seçili yap
+        highlightActive(selectedListIndex);
+      }
+    }
+
+    // Listede aktif olan öğeyi vurgula ve görünür alana kaydır
+    function highlightActive(index) {
+      const items = document.querySelectorAll('.list-item');
+      items.forEach(item => item.classList.remove('active')); // Tüm 'active' sınıflarını kaldır
+
+      if (items[index]) {
+        items[index].classList.add('active'); // Yeni öğeye 'active' sınıfını ekle
+        // Öğeyi görünür alana kaydır, ancak sadece gerekliyse
+        const rect = items[index].getBoundingClientRect();
+        const parentRect = channelListDiv.getBoundingClientRect();
+
+        // Öğenin tam görünür olup olmadığını kontrol et (hem yukarı hem aşağı)
+        if (rect.top < parentRect.top || rect.bottom > parentRect.bottom || rect.top < 0 || rect.bottom > window.innerHeight) {
+          items[index].scrollIntoView({ block: "center", behavior: "smooth" });
+        }
+      }
+    }
+
+    // Oynatıcı alanına tıklama/dokunma ile listeyi açıp kapatma
+    playerContainer.addEventListener('click', (e) => {
+      // Sadece player container'a tıklayınca liste açılsın/kapansın
+      // e.target'ın kanal listesi öğesi olup olmadığını kontrol et
+      if (!listVisible || (listVisible && !e.target.closest('.list-item'))) {
+         toggleChannelList(!listVisible);
+      }
+    });
+
+    // Klavye tuşları ile kontrol
+    document.addEventListener('keydown', e => {
+      // DEBUG: Hangi tuşa basıldığını konsola yazdır
+      console.log("keydown event:", "key:", e.key, "keyCode:", e.keyCode, "code:", e.code);
+
+      if (listVisible) { // Kanal listesi açıkken
+        if (e.key === 'ArrowUp' || e.code === 'ArrowUp') { // e.code da ekledim
+          e.preventDefault(); // Varsayılan kaydırma davranışını engelle
+          if (selectedListIndex > 0) {
+            selectedListIndex--;
+            highlightActive(selectedListIndex);
+          }
+        } else if (e.key === 'ArrowDown' || e.code === 'ArrowDown') { // e.code da ekledim
+          e.preventDefault(); // Varsayılan kaydırma davranışını engelle
+          if (selectedListIndex < channelData.length - 1) {
+            selectedListIndex++;
+            highlightActive(selectedListIndex);
+          }
+        } else if (e.key === 'Enter' || e.key === 'OK' || e.keyCode === 13 || e.code === 'Enter') { // Enter ve OK için daha fazla kontrol
+          e.preventDefault();
+          console.log("Enter/OK tuşuna basıldı, seçilen index:", selectedListIndex, "Kanal:", channelData[selectedListIndex]?.name); 
+          if (channelData[selectedListIndex]) {
+            playChannel(channelData[selectedListIndex]);
+            toggleChannelList(false); // Kanal seçildikten sonra listeyi gizle
+          }
+        } else if (e.key === 'Backspace' || e.key === 'Escape' || e.keyCode === 8 || e.code === 'Backspace' || e.code === 'Escape') { // Backspace ve Escape için daha fazla kontrol
+          e.preventDefault();
+          toggleChannelList(false); // Listeyi kapat
+        }
+      } else { // Kanal listesi kapalıyken (oynatıcı üzerinde)
+        if (e.key === 'ArrowUp' || e.code === 'ArrowUp') {
+          e.preventDefault();
+          if (currentIndex < channelData.length - 1) {
+            currentIndex++;
+            playChannel(channelData[currentIndex]);
+          }
+        } else if (e.key === 'ArrowDown' || e.code === 'ArrowDown') {
+          e.preventDefault();
+          if (currentIndex > 0) {
+            currentIndex--;
+            playChannel(channelData[currentIndex]);
+          }
+        } else if (e.key === 'Enter' || e.key === 'OK' || e.keyCode === 13 || e.code === 'Enter') {
+          e.preventDefault();
+          toggleChannelList(true); // Listeyi aç
+        }
+      }
+    });
+
+    // Dokunmatik hareketler için değişkenler
+    let touchStartX = null;
+    let touchStartY = null;
+
+    // Dokunma başlangıcı
+    playerContainer.addEventListener('touchstart', e => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].clientX;
+        touchStartY = e.touches[0].clientY;
+      }
+    }, { passive: true }); // Dokunma event'ini performansı artırmak için pasif yap
+
+    // Dokunma sonu (Swipes ve kısa dokunuşlar için)
+    playerContainer.addEventListener('touchend', e => {
+      if (touchStartY !== null && e.changedTouches.length === 1) {
+        const endX = e.changedTouches[0].clientX;
+        const endY = e.changedTouches[0].clientY;
+
+        const dx = endX - touchStartX;
+        const dy = endY - touchStartY;
+
+        touchStartX = null; // Sıfırla
+        touchStartY = null; // Sıfırla
+
+        // Kısa dokunuş (tap) kontrolü (hem x hem y yönünde küçük hareket)
+        if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
+          // Eğer kanal listesi zaten açık değilse ve bir liste öğesine dokunulmadıysa
+          if (!listVisible || (listVisible && !e.target.closest('.list-item'))) {
+            toggleChannelList(!listVisible); // Listeyi aç/kapat
+          }
+        } else if (!listVisible) { // Kanal listesi kapalıyken kaydırma (swipe)
+          if (dy < -50) { // Yukarı kaydırma
+            if (currentIndex < channelData.length - 1) {
+              currentIndex++;
+              playChannel(channelData[currentIndex]);
+            }
+          } else if (dy > 50) { // Aşağı kaydırma
+            if (currentIndex > 0) {
+              currentIndex--;
+              playChannel(channelData[currentIndex]);
+            }
+          }
+        } else { // Kanal listesi açıkken kaydırma (swipe)
+          if (dy < -50) { // Yukarı kaydırma (listede yukarı git)
+            if (selectedListIndex > 0) {
+              selectedListIndex--;
+              highlightActive(selectedListIndex);
+            }
+          } else if (dy > 50) { // Aşağı kaydırma (listede aşağı git)
+            if (selectedListIndex < channelData.length - 1) {
+              selectedListIndex++;
+              highlightActive(selectedListIndex);
+            }
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
