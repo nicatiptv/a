@@ -1,6 +1,6 @@
 #EXTM3U
 #EXTINF:-1 tvg-id="2379" tvg-name="AZTV ʜᴅ" tvg-logo="http://epg.one/img/2134.png" group-title="Azerbaijan",AZTV ʜᴅ
-https://vettelchannel-trgoals.hf.space/proxy/m3u?url=http://boxviptv.com:25461/live/sa031/000200/53.m3u8
+https://vettelchannel-trgoals.hf.space/proxy/m3u?url=http://flussonic.azfiber.net/azadazerbaycan/video.m3u8
 #EXTINF:-1 tvg-id="AZ: AZ TV" tvg-name="AzTv " tvg-logo="http://epg.one/img/2134.png" group-title="Azerbaijan",AzTv
 https://vettelchannel-trgoals.hf.space/proxy/m3u?url=http://boxviptv.com:25461/live/sa031/000200/602.m3u8
 #EXTINF:-1 tvg-id="2555" tvg-name="ICTIMAI " tvg-logo="http://epg.one/img/2555.png" group-title="Azerbaijan",ICTIMAI
