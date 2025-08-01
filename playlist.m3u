@@ -161,7 +161,139 @@ http://185.26.157.3:8080/live/jivi/mono.m3u8
 http://185.26.157.3:8080/live/kto_est_kto/mono.m3u8
 #EXTINF:-1 tvg-name="КУХНЯ ТВ" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",КУХНЯ ТВ
 http://185.26.157.3:8080/live/kuhnya_tv/mono.m3u8
-#EXTINF:-1 tvg-name="Москва 24" tvg-id="" tvg-lo#EXTINF:-1 tvg-logo="https://spormeydani.org/wp-content/uploads/2021/05/TRT_Spor_Star_Landscape_on_Light_6000x3000.png" group-title="🆂🅿🅾🆁🆃[ESAS]┃ ♨️",TRT SPOR YILDIZ HD
+#EXTINF:-1 tvg-name="Москва 24" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Москва 24
+http://185.26.157.3:8080/live/moskva_24/mono.m3u8
+#EXTINF:-1 tvg-name="ОТР" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",ОТР
+http://185.26.157.3:8080/live/otr/mono.m3u8
+#EXTINF:-1 tvg-name="Пятница" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Пятница
+http://185.26.157.3:8080/live/pyatnica/mono.m3u8
+#EXTINF:-1 tvg-name="Русский экстрим" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Русский экстрим
+http://185.26.157.3:8080/live/russkiyextrim/mono.m3u8
+#EXTINF:-1 tvg-name="СТС" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",СТС
+http://185.26.157.3:8080/live/sts/mono.m3u8
+#EXTINF:-1 tvg-name="СТС HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",СТС HD
+http://185.26.157.3:8080/live/sts_hd/mono.m3u8
+#EXTINF:-1 tvg-name="СТС Love" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",СТС Love
+http://185.26.157.3:8080/live/sts_love/mono.m3u8
+#EXTINF:-1 tvg-name="Телекафе" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Телекафе
+http://185.26.157.3:8080/live/telekafe/mono.m3u8
+#EXTINF:-1 tvg-name="TLC HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",TLC HD
+http://185.26.157.3:8080/live/tlc/mono.m3u8
+#EXTINF:-1 tvg-name="ТВ3" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",ТВ3
+http://185.26.157.3:8080/live/tv3/mono.m3u8
+#EXTINF:-1 tvg-name="ТВЦ" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",ТВЦ
+http://185.26.157.3:8080/live/tvc/mono.m3u8
+#EXTINF:-1 tvg-name="Усадьба" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Усадьба
+http://185.26.157.3:8080/live/usadba/mono.m3u8
+#EXTINF:-1 tvg-name="Ювелирочка" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Ювелирочка
+http://185.26.157.3:8080/live/yuvelirochka/mono.m3u8
+#EXTINF:-1 tvg-name="Ю" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Ю
+http://185.26.157.3:8080/live/yu_tv/mono.m3u8
+#EXTINF:-1 tvg-name="Звезда" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Звезда
+http://185.26.157.3:8080/live/zvezda/mono.m3u8
+#EXTINF:-1 tvg-name="Спас" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Спас
+http://185.26.157.3:8080/live/spas/mono.m3u8
+#EXTINF:-1 tvg-name="Союз" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Союз
+http://185.26.157.3:8080/live/soyuz/mono.m3u8
+#EXTINF:-1 tvg-name="РБК" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",РБК
+http://185.26.157.3:8080/live/rbk/mono.m3u8
+#EXTINF:-1 tvg-name="Мир" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мир
+http://185.26.157.3:8080/live/mir/mono.m3u8
+#EXTINF:-1 tvg-name="1+1" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",1+1
+http://185.26.157.3:8080/live/1plus1/mono.m3u8
+#EXTINF:-1 tvg-name="2+2" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",2+2
+http://185.26.157.3:8080/live/2plus2/mono.m3u8
+#EXTINF:-1 tvg-name="ICTV" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",ICTV
+http://185.26.157.3:8080/live/ictv/mono.m3u8
+#EXTINF:-1 tvg-name="Интер" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Интер
+http://185.26.157.3:8080/live/inter/mono.m3u8
+#EXTINF:-1 tvg-name="СТБ HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",СТБ HD
+http://185.26.157.3:8080/live/stb/mono.m3u8
+#EXTINF:-1 tvg-name="НТН" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",НТН
+http://185.26.157.3:8080/live/ntn/mono.m3u8
+#EXTINF:-1 tvg-name="Enter-фільм" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Enter-фільм
+http://185.26.157.3:8080/live/enter_film/mono.m3u8
+#EXTINF:-1 tvg-name="СТС Kids" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",СТС Kids
+http://185.26.157.3:8080/live/sts_kids/mono.m3u8
+#EXTINF:-1 tvg-name="Tiji" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Tiji
+http://185.26.157.3:8080/live/tiji/mono.m3u8
+#EXTINF:-1 tvg-name="Мульт" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мульт
+http://185.26.157.3:8080/live/mult/mono.m3u8
+#EXTINF:-1 tvg-name="Мульт HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мульт HD
+http://185.26.157.3:8080/live/multhd/mono.m3u8
+#EXTINF:-1 tvg-name="Da Vinci" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Da Vinci
+http://185.26.157.3:8080/live/da_vinci/mono.m3u8
+#EXTINF:-1 tvg-name="Baby tv" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Baby tv
+http://185.26.157.3:8080/live/babytv/mono.m3u8
+#EXTINF:-1 tvg-name="Бобер" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Бобер
+http://185.26.157.3:8080/live/bober/mono.m3u8
+#EXTINF:-1 tvg-name="Boomerang" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Boomerang
+http://185.26.157.3:8080/live/boomerang/mono.m3u8
+#EXTINF:-1 tvg-name="Cartoon network" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Cartoon network
+http://185.26.157.3:8080/live/cartoonnetwork/mono.m3u8
+#EXTINF:-1 tvg-name="Уникум" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Уникум
+http://185.26.157.3:8080/live/detskiy/mono.m3u8
+#EXTINF:-1 tvg-name="Gulli" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Gulli
+http://185.26.157.3:8080/live/gulli/mono.m3u8
+#EXTINF:-1 tvg-name="jim jam" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",jim jam
+http://185.26.157.3:8080/live/jimjam/mono.m3u8
+#EXTINF:-1 tvg-name="Карусель" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Карусель
+http://185.26.157.3:8080/live/karusel/mono.m3u8
+#EXTINF:-1 tvg-name="Мама" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мама
+http://185.26.157.3:8080/live/mama/mono.m3u8
+#EXTINF:-1 tvg-name="Мультимания" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мультимания
+http://185.26.157.3:8080/live/multimaniya/mono.m3u8
+#EXTINF:-1 tvg-name="Nickelodeon" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Nickelodeon
+http://185.26.157.3:8080/live/nickelodeon/mono.m3u8
+#EXTINF:-1 tvg-name="Шансон ТВ" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Шансон ТВ
+http://185.26.157.3:8080/live/shansontv/mono.m3u8
+#EXTINF:-1 tvg-name="Mezzo HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Mezzo HD
+http://185.26.157.3:8080/live/mezzo/mono.m3u8
+#EXTINF:-1 tvg-name="ТНТ Music" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",ТНТ Music
+http://185.26.157.3:8080/live/tntmusic/mono.m3u8
+#EXTINF:-1 tvg-name="МузТВ" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",МузТВ
+http://185.26.157.3:8080/live/muztv/mono.m3u8
+#EXTINF:-1 tvg-name="Bridge tv" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Bridge tv
+http://185.26.157.3:8080/live/bridgetv/mono.m3u8
+#EXTINF:-1 tvg-name="Bridge tv classic" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Bridge tv classic
+http://185.26.157.3:8080/live/bridgetvclassic/mono.m3u8
+#EXTINF:-1 tvg-name="Ностальгия" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Ностальгия
+http://185.26.157.3:8080/live/nostalgiya/mono.m3u8
+#EXTINF:-1 tvg-name="RU.TV" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",RU.TV
+http://185.26.157.3:8080/live/rutv/mono.m3u8
+#EXTINF:-1 tvg-name="Music Box Russia" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Music Box Russia
+http://185.26.157.3:8080/live/musicboxru/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Боец" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Боец
+http://185.26.157.3:8080/live/matchboec/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Арена" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Арена
+http://185.26.157.3:8080/live/matcharena/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Арена HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Арена HD
+http://185.26.157.3:8080/live/matcharenahd/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 1 HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Футбол 1 HD
+http://185.26.157.3:8080/live/matchfutbol1hd/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 2 HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Футбол 2 HD
+http://185.26.157.3:8080/live/matchfutbol2hd/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Футбол 3 HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Футбол 3 HD
+http://185.26.157.3:8080/live/matchfutbol3hd/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Игра" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Игра
+http://185.26.157.3:8080/live/matchigra/mono.m3u8
+#EXTINF:-1 tvg-name="Матч! Планета" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч! Планета
+http://185.26.157.3:8080/live/matchplaneta/mono.m3u8
+#EXTINF:-1 tvg-name="Матч Премьер" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч Премьер
+http://185.26.157.3:8080/live/matchpremier/mono.m3u8
+#EXTINF:-1 tvg-name="Матч ТВ" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч ТВ
+http://185.26.157.3:8080/live/matchtv/mono.m3u8
+#EXTINF:-1 tvg-name="Матч HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Матч HD
+http://185.26.157.3:8080/live/matchtvhd/mono.m3u8
+#EXTINF:-1 tvg-name="Мир баскетбола" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Мир баскетбола
+http://185.26.157.3:8080/live/mirbasketbola/mono.m3u8
+#EXTINF:-1 tvg-name="Eurosport 1" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Eurosport 1
+http://185.26.157.3:8080/live/eurosport/mono.m3u8
+#EXTINF:-1 tvg-name="Eurosport 2" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Eurosport 2
+http://185.26.157.3:8080/live/eurosport2/mono.m3u8
+#EXTINF:-1 tvg-name="Eurosport 2 HD" tvg-id="" tvg-logo="https://raw.githubusercontent.com/GitLatte/m3ueditor/refs/heads/site/images/default-channel.png" group-title="🇷🇺 RUSİYA 🇷🇺 ┃ ♨️",Eurosport 2 HD
+http://185.26.157.3:8080/live/eurosport2hd/mono.m3u8
+#EXTINF:-1 tvg-logo="https://spormeydani.org/wp-content/uploads/2021/05/TRT_Spor_Star_Landscape_on_Light_6000x3000.png" group-title="🆂🅿🅾🆁🆃[ESAS]┃ ♨️",TRT SPOR YILDIZ HD
 https://live-cdn-65984.varplaycdn.cfd/trtspor2/index.m3u8
 #EXTINF:-1 logo="https://upload.wikimedia.org/wikipedia/tr/archive/e/e9/20140920094552%21A_Spor_logosu.png" tvg-logo="https://upload.wikimedia.org/wikipedia/tr/archive/e/e9/20140920094552%21A_Spor_logosu.png" group-title="🆂🅿🅾🆁🆃[ESAS]┃ ♨️",A SPOR HD
 https://live-cdn-65984.varplaycdn.cfd/aspor/index.m3u8
