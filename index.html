@@ -1,14 +1,54 @@
-// Nicat TV IPTV App (Televizo tipli) - React Native + ExoPlayer base // Bu kod prototipdir. Android TV və telefon üçün optimizasiya olunacaq
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>IPTV Oynadıcı</title>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <select id="channelList"></select>
+  <video id="video" controls width="100%" height="400"></video>
+  <script>
+    // Burada öz siyahınızı əlavə edin
+    const channels = [
+      { name: "Kanal 1", url: "https://example.com/kanal1.m3u8" },
+      { name: "Kanal 2", url: "https://example.com/kanal2.m3u8" },
+      // Daha çox kanal əlavə edin
+    ];
 
-import React, { useEffect, useState } from "react"; import { View, Text, FlatList, TouchableOpacity } from "react-native"; import Video from "react-native-video";
+    // Siyahını select-ə doldururuq
+    const channelList = document.getElementById('channelList');
+    channels.forEach((channel, idx) => {
+      const option = document.createElement('option');
+      option.value = channel.url;
+      option.textContent = channel.name;
+      channelList.appendChild(option);
+    });
 
-const NICAT_PLAYLIST = "https://bit.ly/nicatiptv"; // Playlist sabitlənib
+    var video = document.getElementById('video');
+    function playChannel(url) {
+      if (Hls.isSupported()) {
+        var hls = new Hls();
+        hls.loadSource(url);
+        hls.attachMedia(video);
+        hls.on(Hls.Events.MANIFEST_PARSED, function () {
+          video.play();
+        });
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = url;
+        video.addEventListener('loadedmetadata', function () {
+          video.play();
+        });
+      }
+    }
 
-export default function NicatTV() { const [channels, setChannels] = useState([]); const [currentStream, setCurrentStream] = useState(null);
+    // İlk kanalı avtomatik aç
+    playChannel(channelList.value);
 
-useEffect(() => { fetch(NICAT_PLAYLIST) .then((res) => res.text()) .then((text) => parseM3U(text)) .then((parsed) => setChannels(parsed)) .catch((err) => console.error("Playlist yüklənmədi:", err)); }, []);
-
-const parseM3U = (data) => { const lines = data.split("\n"); const items = []; for (let i = 0; i < lines.length; i++) { if (lines[i].startsWith("#EXTINF")) { const name = lines[i].split(",").pop(); const url = lines[i + 1]; items.push({ name, url }); } } return items; };
-
-return ( <View style={{ flex: 1, backgroundColor: "#000" }}> {currentStream ? ( <Video source={{ uri: currentStream }} style={{ flex: 1 }} controls resizeMode="contain" /> ) : ( <Text style={{ color: "white", textAlign: "center", marginTop: 20 }}> Kanal seçin </Text> )} <FlatList data={channels} keyExtractor={(item) => item.url} renderItem={({ item }) => ( <TouchableOpacity onPress={() => setCurrentStream(item.url)} style={{ padding: 10, borderBottomColor: "gray", borderBottomWidth: 1 }} > <Text style={{ color: "white" }}>{item.name}</Text> </TouchableOpacity> )} /> </View> ); }
-
+    // Kanal dəyişəndə oynatma
+    channelList.addEventListener('change', function() {
+      playChannel(this.value);
+    });
+  </script>
+</body>
+</html>
