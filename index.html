@@ -1,0 +1,14 @@
+// Nicat TV IPTV App (Televizo tipli) - React Native + ExoPlayer base // Bu kod prototipdir. Android TV və telefon üçün optimizasiya olunacaq
+
+import React, { useEffect, useState } from "react"; import { View, Text, FlatList, TouchableOpacity } from "react-native"; import Video from "react-native-video";
+
+const NICAT_PLAYLIST = "https://bit.ly/nicatiptv"; // Playlist sabitlənib
+
+export default function NicatTV() { const [channels, setChannels] = useState([]); const [currentStream, setCurrentStream] = useState(null);
+
+useEffect(() => { fetch(NICAT_PLAYLIST) .then((res) => res.text()) .then((text) => parseM3U(text)) .then((parsed) => setChannels(parsed)) .catch((err) => console.error("Playlist yüklənmədi:", err)); }, []);
+
+const parseM3U = (data) => { const lines = data.split("\n"); const items = []; for (let i = 0; i < lines.length; i++) { if (lines[i].startsWith("#EXTINF")) { const name = lines[i].split(",").pop(); const url = lines[i + 1]; items.push({ name, url }); } } return items; };
+
+return ( <View style={{ flex: 1, backgroundColor: "#000" }}> {currentStream ? ( <Video source={{ uri: currentStream }} style={{ flex: 1 }} controls resizeMode="contain" /> ) : ( <Text style={{ color: "white", textAlign: "center", marginTop: 20 }}> Kanal seçin </Text> )} <FlatList data={channels} keyExtractor={(item) => item.url} renderItem={({ item }) => ( <TouchableOpacity onPress={() => setCurrentStream(item.url)} style={{ padding: 10, borderBottomColor: "gray", borderBottomWidth: 1 }} > <Text style={{ color: "white" }}>{item.name}</Text> </TouchableOpacity> )} /> </View> ); }
+
