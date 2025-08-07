@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8">
+  <title>FluidPlayer Video Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.fluidplayer.com/v3/current/fluidplayer.min.js"></script>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: black; overflow: hidden; }
+
+    #video-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+    }
+
+    video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    #video-controls {
+      position: absolute;
+      bottom: 80px;
+      left: 0;
+      right: 0;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      opacity: 1;
+      transition: opacity 0.5s;
+      z-index: 10;
+    }
+
+    #video-controls.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    #video-controls button {
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 8px;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    #video-list {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.95);
+      color: white;
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 20px;
+      z-index: 20;
+      overflow-y: auto;
+    }
+
+    #video-list button {
+      background: #333;
+      color: white;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      text-align: left;
+    }
+
+    #file-input {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+<div id="video-container">
+  <video id="my-video" controls>
+    <!-- Başlanğıcda heç bir video yüklü deyil -->
+  </video>
+
+  <div id="video-controls">
+    <button onclick="prevVideo()">⏮️</button>
+    <button onclick="togglePlayPause()">⏯️</button>
+    <button onclick="nextVideo()">⏭️</button>
+    <button onclick="triggerFileInput()">➕</button>
+    <button onclick="removeVideo()">🗑️</button>
+    <button onclick="toggleFullscreen()">⛶</button>
+  </div>
+
+  <div id="video-list"></div>
+  <input type="file" id="file-input" accept="video/*" multiple>
+</div>
+
+<script>
+  const player = fluidPlayer('my-video');
+  const video = document.getElementById('my-video');
+  const controls = document.getElementById('video-controls');
+  const videoListDiv = document.getElementById('video-list');
+  const fileInput = document.getElementById('file-input');
+
+  let videoIndex = 0;
+  const playlist = []; // Başlanğıcda boşdur, yalnız istifadəçi əlavə edir
+
+  function loadVideo(index) {
+    if (!playlist[index]) return;
+    const item = playlist[index];
+    video.src = item.url;
+    video.load();
+    video.play();
+  }
+
+  function nextVideo() {
+    if (playlist.length < 2) return;
+    videoIndex = (videoIndex + 1) % playlist.length;
+    loadVideo(videoIndex);
+  }
+
+  function prevVideo() {
+    if (playlist.length < 2) return;
+    videoIndex = (videoIndex - 1 + playlist.length) % playlist.length;
+    loadVideo(videoIndex);
+  }
+
+  function togglePlayPause() {
+    if (video.paused) video.play();
+    else video.pause();
+  }
+
+  function triggerFileInput() {
+    fileInput.click();
+  }
+
+  fileInput.addEventListener('change', function () {
+    const files = Array.from(fileInput.files);
+    files.forEach(file => {
+      const url = URL.createObjectURL(file);
+      playlist.push({ title: file.name, url });
+    });
+    if (playlist.length === files.length) loadVideo(0); // İlk dəfə əlavə edildikdə başlasın
+    alert(`${files.length} video əlavə olundu.`);
+  });
+
+  function removeVideo() {
+    if (playlist.length <= 1) {
+      alert("Sonuncu videonu silmək olmaz.");
+      return;
+    }
+    playlist.splice(videoIndex, 1);
+    videoIndex = 0;
+    loadVideo(videoIndex);
+  }
+
+  // Otomatik kontrol gizleme
+  let hideTimeout;
+  function resetHideControls() {
+    controls.classList.remove("hidden");
+    clearTimeout(hideTimeout);
+    hideTimeout = setTimeout(() => {
+      controls.classList.add("hidden");
+    }, 5000);
+  }
+
+  document.addEventListener("mousemove", resetHideControls);
+  document.addEventListener("touchstart", resetHideControls);
+  resetHideControls();
+
+  // Uzun basma ilə video siyahısı
+  let pressTimer;
+  video.addEventListener('touchstart', () => {
+    pressTimer = setTimeout(showVideoList, 800);
+  });
+  video.addEventListener('touchend', () => {
+    clearTimeout(pressTimer);
+  });
+
+  function showVideoList() {
+    videoListDiv.style.display = "flex";
+    videoListDiv.innerHTML = playlist.map((v, i) =>
+      `<button onclick="selectVideo(${i})">${i + 1}. ${v.title}</button>`
+    ).join('');
+  }
+
+  function selectVideo(index) {
+    videoIndex = index;
+    loadVideo(videoIndex);
+    videoListDiv.style.display = "none";
+  }
+
+  function toggleFullscreen() {
+    const container = document.getElementById('video-container');
+    if (!document.fullscreenElement) {
+      container.requestFullscreen().catch(err => {
+        alert(`Fullscreen rejimi alınmadı: ${err.message}`);
+      });
+    } else {
+      document.exitFullscreen();
+    }
+  }
+
+  // Açılışda tam ekran
+  window.addEventListener("load", () => {
+    const container = document.getElementById('video-container');
+    setTimeout(() => {
+      container.requestFullscreen().catch(() => {});
+    }, 500);
+  });
+</script>
+
+</body>
+</html>
