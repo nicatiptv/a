@@ -103,7 +103,7 @@
   setInterval(updateClock, 1000);
   updateClock();
 
-  const m3u8Url = 'https://listeburayaeklenecek.com';
+  const m3u8Url = 'https://raw.githubusercontent.com/nicatiptv/a/refs/heads/main/playlist.m3u';
 
   fetch(m3u8Url)
     .then(res => res.text())
@@ -233,4 +233,5 @@
 </script>
 
 </body>
+
 </html>
