@@ -1,40 +1,263 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Messenger</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
+    <meta charset="UTF-8">
+    <title>Messenger - Qeydiyyat və Çat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #e4e7ec;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 370px;
+            margin: 40px auto 0 auto;
+            background: #fff;
+            padding: 28px 35px 20px 35px;
+            box-shadow: 0 0 12px #bbb;
+            border-radius: 9px;
+        }
+        h2 {
+            text-align: center;
+            color: #284e8f;
+        }
+        .input-group {
+            margin: 13px 0;
+        }
+        .input-group label {
+            font-size: 15px;
+            color: #555;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .register-btn, .chat-btn {
+            width: 100%;
+            padding: 12px;
+            background: #1976d2;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .register-btn:hover, .chat-btn:hover {
+            background: #135ba1;
+        }
+        .login-link {
+            margin-top: 17px;
+            text-align: center;
+            display: block;
+            color: #1976d2;
+            text-decoration: none;
+        }
+        .error {
+            color: #d32f2f;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        .success {
+            color: #388e3c;
+            text-align: center;
+            margin-bottom: 10px;
+        }
+        /* Çat stili */
+        .chat-container {
+            display: none;
+            flex-direction: column;
+            height: 420px;
+            border-radius: 8px;
+        }
+        .chat-header {
+            background: #1976d2;
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px 8px 0 0;
+            font-size: 18px;
+            text-align: center;
+        }
+        .chat-messages {
+            flex: 1;
+            padding: 15px;
+            background: #f5f5f5;
+            overflow-y: auto;
+            min-height: 240px;
+            max-height: 240px;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-input-group {
+            display: flex;
+            padding: 8px 0 0 0;
+        }
+        .chat-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #b6b6b6;
+            border-radius: 5px 0 0 5px;
+        }
+        .chat-btn {
+            border-radius: 0 5px 5px 0;
+            width: 90px;
+        }
+        .msg-me {
+            background: #c7e2ff;
+            padding: 8px 13px;
+            border-radius: 8px 8px 2px 8px;
+            margin-bottom: 8px;
+            max-width: 70%;
+            align-self: flex-end;
+            margin-left: 30%;
+            font-size: 15px;
+        }
+        .msg-them {
+            background: #f0f1f5;
+            padding: 8px 13px;
+            border-radius: 8px 8px 8px 2px;
+            margin-bottom: 8px;
+            max-width: 70%;
+            align-self: flex-start;
+            font-size: 15px;
+        }
+        .select-user {
+            margin-bottom: 12px;
+            width: 100%;
+            padding: 8px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        @media (max-width: 500px) {
+            .container { width: 98%; padding: 10px; }
+            .chat-header { font-size: 16px; }
+        }
+    </style>
+    <script>
+        // Demo üçün sadə istifadəçi siyahısı
+        const users = [
+            {name: "Nicat", email: "nicat@gmail.com"},
+            {name: "Aysel", email: "aysel@gmail.com"},
+            {name: "Rasim", email: "rasim@gmail.com"}
+        ];
+
+        let currentUser = null;
+        let selectedUser = null;
+
+        function showChatUI() {
+            document.getElementById('register-form').style.display = "none";
+            document.querySelector('.chat-container').style.display = "flex";
+            document.getElementById('chat-header-user').textContent = currentUser.name;
+            // Digər istifadəçiləri seçmək üçün siyahı hazırla
+            const select = document.getElementById('user-select');
+            select.innerHTML = "";
+            users.filter(u => u.email !== currentUser.email).forEach(user => {
+                const opt = document.createElement("option");
+                opt.value = user.email;
+                opt.textContent = `${user.name} (${user.email})`;
+                select.appendChild(opt);
+            });
+            if(select.options.length) {
+                selectedUser = users.find(u => u.email === select.options[0].value);
+            }
+        }
+
+        function validateForm(event) {
+            event.preventDefault();
+            var gmailInput = document.getElementById('gmail').value.trim();
+            var passwordInput = document.getElementById('password').value.trim();
+            var errorDiv = document.getElementById('error');
+            var successDiv = document.getElementById('success');
+            errorDiv.innerHTML = "";
+            successDiv.innerHTML = "";
+            var gmailPattern = /^[a-zA-Z0-9_.+-]+@gmail\.com$/;
+            if (!gmailPattern.test(gmailInput)) {
+                errorDiv.innerHTML = "Zəhmət olmasa düzgün Gmail ünvanı daxil edin!";
+                return false;
+            }
+            if (passwordInput.length < 6) {
+                errorDiv.innerHTML = "Şifrə ən azı 6 simvoldan ibarət olmalıdır!";
+                return false;
+            }
+            // Demo üçün qeydiyyat və ya "daxil ol"
+            let user = users.find(u => u.email === gmailInput);
+            if (!user) {
+                user = {name: gmailInput.split('@')[0], email: gmailInput};
+                users.push(user);
+            }
+            currentUser = user;
+            successDiv.innerHTML = "Qeydiyyat uğurla tamamlandı, sisteme daxil olursunuz...";
+            setTimeout(showChatUI, 900);
+            return false;
+        }
+
+        function onUserChange(e) {
+            selectedUser = users.find(u => u.email === e.target.value);
+            document.getElementById('chat-messages').innerHTML = "";
+        }
+
+        function sendMessage(event) {
+            event.preventDefault();
+            const input = document.getElementById('chat-input');
+            const msg = input.value.trim();
+            if (!msg) return;
+            const messagesDiv = document.getElementById('chat-messages');
+            const myMsgDiv = document.createElement("div");
+            myMsgDiv.className = "msg-me";
+            myMsgDiv.textContent = msg;
+            messagesDiv.appendChild(myMsgDiv);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            input.value = "";
+            // Demo üçün cavab (real backend üçün burada mesaj göndərmək və qəbul etmək lazımdır)
+            setTimeout(function() {
+                const replyDiv = document.createElement("div");
+                replyDiv.className = "msg-them";
+                replyDiv.textContent = selectedUser ? selectedUser.name + ": Salam! 👋" : "Salam! 👋";
+                messagesDiv.appendChild(replyDiv);
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
+            }, 800);
+        }
+    </script>
 </head>
-<body class="bg-gray-100">
+<body>
+    <div class="container">
+        <!-- Qeydiyyat formu -->
+        <form id="register-form" onsubmit="validateForm(event)">
+            <h2>Messenger Qeydiyyat</h2>
+            <div class="input-group">
+                <label for="gmail">Gmail ünvanı:</label>
+                <input type="email" id="gmail" name="gmail" placeholder="nümunə@gmail.com" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Şifrə:</label>
+                <input type="password" id="password" name="password" placeholder="Şifrənizi daxil edin" required>
+            </div>
+            <div id="error" class="error"></div>
+            <div id="success" class="success"></div>
+            <button type="submit" class="register-btn">Qeydiyyatdan keç / Daxil ol</button>
+        </form>
 
-  <!-- LOGIN PANEL -->
-  <div id="loginPanel" class="flex items-center justify-center h-screen">
-    <div class="bg-white p-8 rounded-2xl shadow-lg w-96 text-center">
-      <h1 class="text-2xl font-bold text-gray-800 mb-6">Messenger Girişi</h1>
-      <button id="googleLogin" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-xl transition">
-        Gmail ilə daxil ol
-      </button>
+        <!-- Çat interfeysi -->
+        <div class="chat-container" style="display:none; flex-direction: column;">
+            <div class="chat-header">
+                <span id="chat-header-user"></span> kimi daxil olmusunuz
+            </div>
+            <select class="select-user" id="user-select" onchange="onUserChange(event)">
+            </select>
+            <div id="chat-messages" class="chat-messages"></div>
+            <form class="chat-input-group" onsubmit="sendMessage(event)">
+                <input type="text" class="chat-input" id="chat-input" placeholder="Mesaj yazın...">
+                <button class="chat-btn" type="submit">Göndər</button>
+            </form>
+        </div>
+        <a href="#" class="login-link" onclick="location.reload()">Çıxış</a>
     </div>
-  </div>
-
-  <!-- CHAT PANEL -->
-  <div id="chatPanel" class="hidden max-w-lg mx-auto bg-white shadow-xl rounded-2xl mt-10 p-4">
-    <div class="flex justify-between items-center mb-4">
-      <h1 class="text-2xl font-bold text-gray-800">Messenger</h1>
-      <button id="logoutBtn" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-xl">Çıxış</button>
-    </div>
-    <div id="messages" class="h-80 overflow-y-auto border p-3 rounded-xl bg-gray-50"></div>
-    <div class="flex gap-2 mt-4">
-      <input id="messageInput" type="text" placeholder="Mesaj yazın..."
-             class="flex-1 border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
-      <button id="sendBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded-xl">Göndər</button>
-    </div>
-  </div>
-
+</body>
+</html>
   <script>
     // Firebase konfiqurasiya
     const firebaseConfig = {
