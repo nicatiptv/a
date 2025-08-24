@@ -2,39 +2,149 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
-  <title>Kanka IPTV Player</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kanka IPTV</title>
   <style>
-    body { margin:0; font-family: Arial, sans-serif; background:#181818; color:#fff;}
-    #app { display:flex; flex-direction:column; height:100vh; }
-    header {
-      background:#262626; padding:12px 20px; font-size:1.6em; font-weight:700;
-      color:#fff; letter-spacing:1px; box-shadow:0 2px 4px #0002;
+    body { background: #181818; color: #fff; font-family: Arial, sans-serif; margin: 0;}
+    #container { display: flex; height: 100vh; }
+    #sidebar {
+      background: #222;
+      width: 220px; min-width: 130px;
+      padding: 0; margin: 0;
+      overflow-y: auto;
+      border-right: 1px solid #333;
+      display: flex;
+      flex-direction: column;
     }
-    #main { display:flex; flex:1; min-height:0; }
-    #groups {
-      background:#222; width:230px; min-width:150px; max-width:300px;
-      overflow-y:auto; border-right:1px solid #333; padding:10px 0;
+    #sidebar .header { font-size: 1.4em; font-weight: bold; padding: 12px 16px; border-bottom: 1px solid #333;}
+    #searchbar { margin: 8px 12px; }
+    #searchbar input {
+      width: 100%; background: #191919; border: 1px solid #444; color: #fff;
+      padding: 7px; border-radius: 6px; font-size: 1em;
     }
-    #groups .group {
-      padding:10px 20px; cursor:pointer; border-left:4px solid transparent;
-      transition:background .13s;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+    #kanal-list {
+      flex: 1; overflow-y: auto; padding: 6px 0;
+      display: flex; flex-direction: column; gap: 3px;
     }
-    #groups .group.selected {
-      background:#333; border-left:4px solid #4e9fff; color:#4e9fff;
+    .kanal {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 15px;
+      cursor: pointer;
+      border-bottom: 1px solid #292929;
+      transition: background 0.14s;
     }
-    #channels {
-      flex:1;
-      background:#191919;
-      overflow-y:auto;
-      display:flex;
-      flex-direction:column;
+    .kanal:hover, .kanal.selected {
+      background: #232f43; color: #4e9fff;
     }
-    #channel-list {
-      flex:1; overflow-y:auto; padding:8px;
+    .logo { width: 38px; height: 38px; border-radius: 4px; object-fit: contain; background: #333;}
+    .title { font-size: 1.04em; font-weight: 500; flex: 1; }
+    #player {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      background: #181818;
+    }
+    #video-title { margin: 15px 0 5px 0; font-weight: bold; font-size: 1.15em; color: #4e9fff;}
+    video { width: 90vw; max-width: 720px; background: #000; border-radius: 9px; margin-bottom: 7px;}
+    @media (max-width: 650px) {
+      #container { flex-direction: column;}
+      #sidebar { width: 100vw; min-width: 0; flex-direction: row; border-right: none; border-bottom: 1px solid #222;}
+      #kanal-list { flex-direction: row; overflow-x: auto; }
+      .kanal { padding: 8px 5px; flex-direction: column;}
+    }
+  </style>
+</head>
+<body>
+<div id="container">
+  <div id="sidebar">
+    <div class="header">Kanka IPTV</div>
+    <div id="searchbar">
+      <input type="text" id="search" placeholder="Kanal axtar...">
+    </div>
+    <div id="kanal-list">
+      <!-- Kanallar burada olacaq -->
+    </div>
+  </div>
+  <div id="player">
+    <div id="video-title"></div>
+    <video id="video" controls autoplay poster=""></video>
+  </div>
+</div>
+<script>
+// M3U-dan alınmış bəzi nümunə kanallar:
+const kanallar = [
+  {
+    ad: "AZTV",
+    logo: "https://i.postimg.cc/sg126ZT1/a.png",
+    stream: "http://erlyvideo.izone.az:80/aztv/mono.m3u8"
+  },
+  {
+    ad: "İCTİMAİ TV",
+    logo: "https://i.postimg.cc/3wvx7Q5T/ITV-Azerbaijan-Logo.png",
+    stream: "http://erlyvideo.izone.az:80/ictimaitv/mono.m3u8"
+  },
+  {
+    ad: "ATV",
+    logo: "https://i.postimg.cc/T1YxKZSh/785cfca9083712aedfed84b91a0f00e8.png",
+    stream: "http://erlyvideo.izone.az:80/azadazerbaycan/mono.m3u8"
+  },
+  {
+    ad: "XƏZƏR TV",
+    logo: "https://i.postimg.cc/bYFW0DSm/X-z-r-TV-2023.png",
+    stream: "http://erlyvideo.izone.az:80/xezertv/mono.m3u8"
+  },
+  {
+    ad: "ARB TV",
+    logo: "https://i.postimg.cc/zfJxY8RL/ARB-Media-Qrup.png",
+    stream: "http://erlyvideo.izone.az:80/arb/mono.m3u8"
+  },
+  {
+    ad: "SPACE TV",
+    logo: "https://i.postimg.cc/qMhY1J84/Space-TV-2023.png",
+    stream: "http://erlyvideo.izone.az:80/spacetv/mono.m3u8"
+  }
+  // ...istəyə uyğun əlavə etmək olar.
+];
+
+const kanalList = document.getElementById('kanal-list');
+const video = document.getElementById('video');
+const videoTitle = document.getElementById('video-title');
+const search = document.getElementById('search');
+
+function renderKanallar(filter="") {
+  kanalList.innerHTML = "";
+  let filtered = kanallar.filter(k => k.ad.toLowerCase().includes(filter.toLowerCase()));
+  filtered.forEach((k, i) => {
+    const el = document.createElement('div');
+    el.className = 'kanal';
+    el.innerHTML = `<img class="logo" src="${k.logo}"><div class="title">${k.ad}</div>`;
+    el.onclick = function() {
+      document.querySelectorAll('.kanal').forEach(e => e.classList.remove('selected'));
+      el.classList.add('selected');
+      video.src = k.stream;
+      videoTitle.textContent = k.ad;
+      video.play();
+    };
+    kanalList.appendChild(el);
+    if (i === 0 && !video.src) {
+      el.click();
+    }
+  });
+
+  if(filtered.length === 0) {
+    kanalList.innerHTML = '<div style="color:#888;padding:20px;text-align:center;">Kanal tapılmadı.</div>';
+    video.src = "";
+    videoTitle.textContent = "";
+  }
+}
+search.oninput = e => renderKanallar(e.target.value);
+
+// İlk render
+renderKanallar();
+</script>
+</body>
+</html>      flex:1; overflow-y:auto; padding:8px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
       gap: 8px;
