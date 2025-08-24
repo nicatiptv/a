@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Messenger</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/11.0.0/firebase-firestore.js"></script>
+</head>
+<body class="bg-gray-100">
+
+  <!-- LOGIN PANEL -->
+  <div id="loginPanel" class="flex items-center justify-center h-screen">
+    <div class="bg-white p-8 rounded-2xl shadow-lg w-96 text-center">
+      <h1 class="text-2xl font-bold text-gray-800 mb-6">Messenger Girişi</h1>
+      <button id="googleLogin" class="w-full bg-red-500 hover:bg-red-600 text-white py-2 rounded-xl transition">
+        Gmail ilə daxil ol
+      </button>
+    </div>
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div id="chatPanel" class="hidden max-w-lg mx-auto bg-white shadow-xl rounded-2xl mt-10 p-4">
+    <div class="flex justify-between items-center mb-4">
+      <h1 class="text-2xl font-bold text-gray-800">Messenger</h1>
+      <button id="logoutBtn" class="bg-gray-200 hover:bg-gray-300 px-3 py-1 rounded-xl">Çıxış</button>
+    </div>
+    <div id="messages" class="h-80 overflow-y-auto border p-3 rounded-xl bg-gray-50"></div>
+    <div class="flex gap-2 mt-4">
+      <input id="messageInput" type="text" placeholder="Mesaj yazın..."
+             class="flex-1 border rounded-xl p-2 focus:outline-none focus:ring-2 focus:ring-blue-400" />
+      <button id="sendBtn" class="bg-blue-500 hover:bg-blue-600 text-white px-4 rounded-xl">Göndər</button>
+    </div>
+  </div>
+
+  <script>
+    // Firebase konfiqurasiya
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_PROJECT_ID.appspot.com",
+      messagingSenderId: "YOUR_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
+
+    // Firebase başladılır
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const db = firebase.firestore();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    const loginPanel = document.getElementById("loginPanel");
+    const chatPanel = document.getElementById("chatPanel");
+    const googleLoginBtn = document.getElementById("googleLogin");
+    const logoutBtn = document.getElementById("logoutBtn");
+    const messagesDiv = document.getElementById("messages");
+    const messageInput = document.getElementById("messageInput");
+    const sendBtn = document.getElementById("sendBtn");
+
+    let currentUser = null;
+
+    // İstifadəçi statusunu izləyirik
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        currentUser = user;
+        loginPanel.classList.add("hidden");
+        chatPanel.classList.remove("hidden");
+        loadMessages();
+      } else {
+        currentUser = null;
+        chatPanel.classList.add("hidden");
+        loginPanel.classList.remove("hidden");
+      }
+    });
+
+    // Gmail ilə login
+    googleLoginBtn.addEventListener("click", async () => {
+      try {
+        await auth.signInWithPopup(provider);
+      } catch (error) {
+        alert("Xəta baş verdi: " + error.message);
+      }
+    });
+
+    // Çıxış
+    logoutBtn.addEventListener("click", async () => {
+      await auth.signOut();
+    });
+
+    // Mesajları yükləmək
+    function loadMessages() {
+      db.collection("messages")
+        .orderBy("timestamp")
+        .onSnapshot(snapshot => {
+          messagesDiv.innerHTML = "";
+          snapshot.forEach(doc => {
+            const msg = doc.data();
+            const div = document.createElement("div");
+            div.classList.add(
+              "p-2", "my-1", "rounded-xl",
+              msg.email === currentUser.email ? "bg-blue-200 text-right" : "bg-gray-200"
+            );
+            div.innerText = `${msg.name}: ${msg.text}`;
+            messagesDiv.appendChild(div);
+          });
+          messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        });
+    }
+
+    // Mesaj göndərmək
+    sendBtn.addEventListener("click", async () => {
+      if (messageInput.value.trim() !== "" && currentUser) {
+        await db.collection("messages").add({
+          name: currentUser.displayName,
+          email: currentUser.email,
+          text: messageInput.value,
+          timestamp: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        messageInput.value = "";
+      }
+    });
+  </script>
+</body>
+  </html>
