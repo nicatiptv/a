@@ -2,267 +2,240 @@
 <html lang="az">
 <head>
   <meta charset="UTF-8">
-  <title>Mobil Nömrə ilə Qeydiyyat və Əlaqə</title>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>Kanka IPTV Player</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7;}
-    .container { background: #fff; padding: 24px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px #ccc;}
-    h2 { color: #0077aa; }
-    input { width: 100%; padding: 8px; margin: 8px 0 12px 0; border: 1px solid #ccc; border-radius: 4px;}
-    button { background: #0077aa; color: #fff; padding: 10px 18px; border: none; border-radius: 4px; cursor: pointer;}
-    button:hover { background: #005577;}
-    .success { color: green;}
-    .error { color: red;}
-    .section { margin-bottom: 36px;}
+    body { margin:0; font-family: Arial, sans-serif; background:#181818; color:#fff;}
+    #app { display:flex; flex-direction:column; height:100vh; }
+    header {
+      background:#262626; padding:12px 20px; font-size:1.6em; font-weight:700;
+      color:#fff; letter-spacing:1px; box-shadow:0 2px 4px #0002;
+    }
+    #main { display:flex; flex:1; min-height:0; }
+    #groups {
+      background:#222; width:230px; min-width:150px; max-width:300px;
+      overflow-y:auto; border-right:1px solid #333; padding:10px 0;
+    }
+    #groups .group {
+      padding:10px 20px; cursor:pointer; border-left:4px solid transparent;
+      transition:background .13s;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+    }
+    #groups .group.selected {
+      background:#333; border-left:4px solid #4e9fff; color:#4e9fff;
+    }
+    #channels {
+      flex:1;
+      background:#191919;
+      overflow-y:auto;
+      display:flex;
+      flex-direction:column;
+    }
+    #channel-list {
+      flex:1; overflow-y:auto; padding:8px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 8px;
+    }
+    .channel {
+      background:#232323;
+      border-radius:6px;
+      padding:8px;
+      cursor:pointer;
+      display:flex; align-items:center;
+      gap:10px;
+      transition:background .15s, transform .1s;
+      border:2px solid transparent;
+    }
+    .channel.selected, .channel:hover {
+      background:#252f43;
+      border-color:#4e9fff;
+      color:#4e9fff;
+      transform: scale(1.02);
+    }
+    .logo {
+      width:46px; height:46px; background:#444; border-radius:4px; object-fit:contain;
+      flex-shrink:0;
+      box-shadow:0 2px 7px #0002;
+    }
+    .title {
+      font-size:1.06em; font-weight:500; flex:1;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .searchbar {
+      margin:8px 12px;
+      display:flex; gap:7px; align-items:center;
+    }
+    .searchbar input {
+      flex:1;
+      padding:7px 10px;
+      border-radius:4px;
+      border:none;
+      background:#222; color:#fff;
+      font-size:1em;
+    }
+    #player-box {
+      background:#131921;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:10px 0 0 0;
+      min-height:230px;
+      border-bottom:1px solid #222;
+      position:sticky;
+      top:0;
+      z-index:9;
+    }
+    video {
+      width:95%;
+      max-width:900px;
+      max-height:58vh;
+      outline:none;
+      background:#050505;
+      margin-bottom:8px;
+      border-radius:8px;
+      box-shadow:0 6px 32px #000c;
+    }
+    #player-title {
+      font-size:1.18em;
+      font-weight:600;
+      margin-bottom:10px;
+      color:#4e9fff;
+      text-align:center;
+      max-width:95vw;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    @media (max-width:900px) {
+      #main { flex-direction:column; }
+      #groups { flex-direction:row; width:100%; max-width:none; min-width:0; border-right:none; border-bottom:1px solid #333; display:flex; overflow-x:auto; overflow-y:hidden;}
+      #groups .group { padding:8px 14px; font-size:.98em;}
+      #channels { flex:1 1 0; }
+      #channel-list { grid-template-columns:repeat(auto-fill, minmax(180px, 1fr)); }
+    }
+    @media (max-width:600px) {
+      video { min-height:160px; }
+      .channel { padding:7px 3px; }
+      #groups .group { padding:7px 11px;}
+    }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="section">
-      <h2>Mobil nömrə ilə qeydiyyat</h2>
-      <input id="registerPhone" placeholder="Nömrənizi daxil edin (məs: +994XXXXXXXXX)">
-      <button onclick="sendOtp()">SMS ilə OTP göndər</button>
-      <input id="registerOtp" placeholder="OTP kodunu daxil edin">
-      <button onclick="verifyOtp()">OTP-ni təsdiqlə</button>
-      <div id="registerStatus"></div>
-    </div>
-    <div class="section">
-      <h2>İstifadəçi ilə əlaqə</h2>
-      <input id="searchPhone" placeholder="Əlaqə saxlamaq istədiyiniz nömrə">
-      <button onclick="findUser()">Axtar</button>
-      <div id="userStatus"></div>
+<div id="app">
+  <header>Kanka IPTV</header>
+  <div id="main">
+    <div id="groups"></div>
+    <div id="channels">
+      <div id="player-box" style="display:none;">
+        <div id="player-title"></div>
+        <video id="player" controls autoplay poster="" ></video>
+      </div>
+      <div class="searchbar">
+        <input id="search" type="text" placeholder="Kanal axtar...">
+      </div>
+      <div id="channel-list"></div>
     </div>
   </div>
-  <script>
-    async function sendOtp() {
-      const phone = document.getElementById('registerPhone').value;
-      if (!phone) return;
-      try {
-        await axios.post('http://localhost:3001/api/send-otp', { phone });
-        document.getElementById('registerStatus').innerHTML = '<span class="success">OTP göndərildi!</span>';
-      } catch (e) {
-        document.getElementById('registerStatus').innerHTML = '<span class="error">Xəta baş verdi: '+(e.response?.data?.error || e.message)+'</span>';
-      }
-    }
-
-    async function verifyOtp() {
-      const phone = document.getElementById('registerPhone').value;
-      const otp = document.getElementById('registerOtp').value;
-      if (!otp || !phone) return;
-      try {
-        const res = await axios.post('http://localhost:3001/api/verify-otp', { phone, otp });
-        if (res.data.success) {
-          document.getElementById('registerStatus').innerHTML = '<span class="success">Qeydiyyat tamamlandı!</span>';
-        } else {
-          document.getElementById('registerStatus').innerHTML = '<span class="error">OTP səhvdir!</span>';
-        }
-      } catch (e) {
-        document.getElementById('registerStatus').innerHTML = '<span class="error">Xəta baş verdi: '+(e.response?.data?.error || e.message)+'</span>';
-      }
-    }
-
-    async function findUser() {
-      const phone = document.getElementById('searchPhone').value;
-      if (!phone) return;
-      try {
-        const res = await axios.get('http://localhost:3001/api/user/' + phone);
-        const user = res.data.user;
-        document.getElementById('userStatus').innerHTML =
-          `<span class="success">İstifadəçi tapıldı: ${user.phone} <br>Status: ${user.online ? "Online" : "Offline"}</span>`;
-      } catch (e) {
-        document.getElementById('userStatus').innerHTML = '<span class="error">İstifadəçi tapılmadı!</span>';
-      }
-    }
-  </script>
-</body>
-</html>            border-radius: 5px;
-        }
-        .register-btn, .chat-btn {
-            width: 100%;
-            padding: 12px;
-            background: #1976d2;
-            color: #fff;
-            font-size: 16px;
-            border: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .register-btn:hover, .chat-btn:hover {
-            background: #135ba1;
-        }
-        .login-link {
-            margin-top: 17px;
-            text-align: center;
-            display: block;
-            color: #1976d2;
-            text-decoration: none;
-        }
-        .error {
-            color: #d32f2f;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        .success {
-            color: #388e3c;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-        /* Çat stili */
-        .chat-container {
-            display: none;
-            flex-direction: column;
-            height: 420px;
-            border-radius: 8px;
-        }
-        .chat-header {
-            background: #1976d2;
-            color: #fff;
-            padding: 12px;
-            border-radius: 8px 8px 0 0;
-            font-size: 18px;
-            text-align: center;
-        }
-        .chat-messages {
-            flex: 1;
-            padding: 15px;
-            background: #f5f5f5;
-            overflow-y: auto;
-            min-height: 240px;
-            max-height: 240px;
-            border-bottom: 1px solid #ddd;
-        }
-        .chat-input-group {
-            display: flex;
-            padding: 8px 0 0 0;
-        }
-        .chat-input {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #b6b6b6;
-            border-radius: 5px 0 0 5px;
-        }
-        .chat-btn {
-            border-radius: 0 5px 5px 0;
-            width: 90px;
-        }
-        .msg-me {
-            background: #c7e2ff;
-            padding: 8px 13px;
-            border-radius: 8px 8px 2px 8px;
-            margin-bottom: 8px;
-            max-width: 70%;
-            align-self: flex-end;
-            margin-left: 30%;
-            font-size: 15px;
-        }
-        .msg-them {
-            background: #f0f1f5;
-            padding: 8px 13px;
-            border-radius: 8px 8px 8px 2px;
-            margin-bottom: 8px;
-            max-width: 70%;
-            align-self: flex-start;
-            font-size: 15px;
-        }
-        .select-user {
-            margin-bottom: 12px;
-            width: 100%;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-        }
-        @media (max-width: 500px) {
-            .container { width: 98%; padding: 10px; }
-            .chat-header { font-size: 16px; }
-        }
-    </style>
-    <script>
-        // Demo üçün sadə istifadəçi siyahısı
-        const users = [
-            {name: "Nicat", email: "nicat@gmail.com"},
-            {name: "Aysel", email: "aysel@gmail.com"},
-            {name: "Rasim", email: "rasim@gmail.com"}
-        ];
-
-        let currentUser = null;
-        let selectedUser = null;
-
-        function showChatUI() {
-            document.getElementById('register-form').style.display = "none";
-            document.querySelector('.chat-container').style.display = "flex";
-            document.getElementById('chat-header-user').textContent = currentUser.name;
-            // Digər istifadəçiləri seçmək üçün siyahı hazırla
-            const select = document.getElementById('user-select');
-            select.innerHTML = "";
-            users.filter(u => u.email !== currentUser.email).forEach(user => {
-                const opt = document.createElement("option");
-                opt.value = user.email;
-                opt.textContent = `${user.name} (${user.email})`;
-                select.appendChild(opt);
-            });
-            if(select.options.length) {
-                selectedUser = users.find(u => u.email === select.options[0].value);
-            }
-        }
-
-        function validateForm(event) {
-            event.preventDefault();
-            var gmailInput = document.getElementById('gmail').value.trim();
-            var passwordInput = document.getElementById('password').value.trim();
-            var errorDiv = document.getElementById('error');
-            var successDiv = document.getElementById('success');
-            errorDiv.innerHTML = "";
-            successDiv.innerHTML = "";
-            var gmailPattern = /^[a-zA-Z0-9_.+-]+@gmail\.com$/;
-            if (!gmailPattern.test(gmailInput)) {
-                errorDiv.innerHTML = "Zəhmət olmasa düzgün Gmail ünvanı daxil edin!";
-                return false;
-            }
-            if (passwordInput.length < 6) {
-                errorDiv.innerHTML = "Şifrə ən azı 6 simvoldan ibarət olmalıdır!";
-                return false;
-            }
-            // Demo üçün qeydiyyat və ya "daxil ol"
-            let user = users.find(u => u.email === gmailInput);
-            if (!user) {
-                user = {name: gmailInput.split('@')[0], email: gmailInput};
-                users.push(user);
-            }
-            currentUser = user;
-            successDiv.innerHTML = "Qeydiyyat uğurla tamamlandı, sisteme daxil olursunuz...";
-            setTimeout(showChatUI, 900);
-            return false;
-        }
-
-        function onUserChange(e) {
-            selectedUser = users.find(u => u.email === e.target.value);
-            document.getElementById('chat-messages').innerHTML = "";
-        }
-
-        function sendMessage(event) {
-            event.preventDefault();
-            const input = document.getElementById('chat-input');
-            const msg = input.value.trim();
-            if (!msg) return;
-            const messagesDiv = document.getElementById('chat-messages');
-            const myMsgDiv = document.createElement("div");
-            myMsgDiv.className = "msg-me";
-            myMsgDiv.textContent = msg;
-            messagesDiv.appendChild(myMsgDiv);
-            messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            input.value = "";
-            // Demo üçün cavab (real backend üçün burada mesaj göndərmək və qəbul etmək lazımdır)
-            setTimeout(function() {
-                const replyDiv = document.createElement("div");
-                replyDiv.className = "msg-them";
-                replyDiv.textContent = selectedUser ? selectedUser.name + ": Salam! 👋" : "Salam! 👋";
-                messagesDiv.appendChild(replyDiv);
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }, 800);
-        }
-    </script>
+</div>
+<script>
+/* M3U Content Start */
+const m3uData = `#EXTM3U
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/wvvrmLHc/In-Shot-20250209-192107003.png" group-title="Azərbaycan",https://t.me/kankatv
+https://rtmp.streams.ovh:1936/barazarelax/barazarelax/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/sg126ZT1/a.png" group-title="Azərbaycan",AZTV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/aztv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/sg126ZT1/a.png" group-title="Azərbaycan",AZTV®️ ᵏᵃᵑᵏᵃ
+https://str.yodacdn.net/aztv/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/3wvx7Q5T/ITV-Azerbaijan-Logo.png" group-title="Azərbaycan",İCTİMAİ TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/ictimaitv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/3wvx7Q5T/ITV-Azerbaijan-Logo.png" group-title="Azərbaycan",İCTİMAİ TV®️ ᵏᵃᵑᵏᵃ
+https://node19.connect.az:9081/tv/live/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/0Q12yXPJ/M-d-niyy-t-TV-loqo.png" group-title="Azərbaycan",MƏDƏNİYYƏT TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/medeniyyet/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/0Q12yXPJ/M-d-niyy-t-TV-loqo.png" group-title="Azərbaycan",MƏDƏNİYYƏT TV®️ ᵏᵃᵑᵏᵃ
+https://str.yodacdn.net/medeniyyet/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/T1YxKZSh/785cfca9083712aedfed84b91a0f00e8.png" group-title="Azərbaycan",ATV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/azadazerbaycan/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/T1YxKZSh/785cfca9083712aedfed84b91a0f00e8.png" group-title="Azərbaycan",ATV®️ ᵏᵃᵑᵏᵃ
+https://stream.atv.az/WebRTCAppEE/streams/780339739845112514894920_adaptive.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/bYFW0DSm/X-z-r-TV-2023.png" group-title="Azərbaycan",XƏZƏR TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/xezertv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/bYFW0DSm/X-z-r-TV-2023.png" group-title="Azərbaycan",XƏZƏR®️ TV ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/xezer-tv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/qMhY1J84/Space-TV-2023.png" group-title="Azərbaycan",SPACE TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/spacetv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/qMhY1J84/Space-TV-2023.png" group-title="Azərbaycan",SPACE TV®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/space-tv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/zfJxY8RL/ARB-Media-Qrup.png" group-title="Azərbaycan",ARB TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/arb/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/zfJxY8RL/ARB-Media-Qrup.png" group-title="Azərbaycan",ARB TV®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/arb.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/hjvMhssc/ARB-24.png" group-title="Azərbaycan",ARB 24 ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/arb24/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/hjvMhssc/ARB-24.png" group-title="Azərbaycan",ARB 24®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/arb-24.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/4nk1Lggx/ARB-Gunesh-Logo.png" group-title="Azərbaycan",ARB GÜNƏŞ ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/arbgunesh/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/4nk1Lggx/ARB-Gunesh-Logo.png" group-title="Azərbaycan",ARB GÜNƏŞ®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/main/myvideo-az/arb-gunes.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/pXfSw016/hd-logo.png" group-title="Azərbaycan",BAKU TV ᵏᵃᵑᵏᵃ
+https://rtmp.baku.tv/hls/bakutv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/pXfSw016/hd-logo.png" group-title="Azərbaycan",BAKU TV®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/baku-tv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/KcNLCBD5/Real-TV-Azerbaijan-Logo.png" group-title="Azərbaycan",REAL TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/realtv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/KcNLCBD5/Real-TV-Azerbaijan-Logo.png" group-title="Azərbaycan",REAL TV®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/real-tv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/3w4FTNxx/CBC-Sport-TV-loqo.png" group-title="Azərbaycan",CBC SPORT ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/cbcsporthd/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/3w4FTNxx/CBC-Sport-TV-loqo.png" group-title="Azərbaycan",CBC SPORT®️ ᵏᵃᵑᵏᵃ
+https://mn-nl.mncdn.com/cbcsports_live/cbcsports/chunklist.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/7LfmZXmD/dman-TV-logo.png" group-title="Azərbaycan",IDMAN TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/idmanaz/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/7LfmZXmD/dman-TV-logo.png" group-title="Azərbaycan",IDMAN TV®️ ᵏᵃᵑᵏᵃ
+https://str.yodacdn.net/idman/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/8cBDyLJJ/In-Shot-20250209-204416916.png" group-title="Azərbaycan",MTV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/muztvaz/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/8cBDyLJJ/In-Shot-20250209-204416916.png" group-title="Azərbaycan",MTV®️ ᵏᵃᵑᵏᵃ
+http://135.181.115.81:8000/play/a04u/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/7YG1Fbst/D-nya-TV-2019-h-h.png" group-title="Azərbaycan",DÜNYA TV ᵏᵃᵑᵏᵃ
+http://erlyvideo.izone.az:80/dunyatv/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/7YG1Fbst/D-nya-TV-2019-h-h.png" group-title="Azərbaycan",DÜNYA TV®️ ᵏᵃᵑᵏᵃ
+https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/dunya-tv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/BbWhyD53/CBC-Azerbaijan-Logo.png" group-title="Azərbaycan",CBC ᵏᵃᵑᵏᵃ
+https://stream.cbctv.az:5443/LiveApp/streams/cbctv.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/QCbpbW00/Gunaz-tv-svg.png" group-title="Azərbaycan",GÜNAZ TV ᵏᵃᵑᵏᵃ
+http://135.181.115.81:8000/play/a04o/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/SxR28nX0/Qafqaz-TV-2017-h-h.png" group-title="Azərbaycan",QAFQAZ TV ᵏᵃᵑᵏᵃ
+http://pars.viper01.xyz:8080/play/live.php?mac=00:1a:79:54:fc:b1&stream=563743&extension=m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/529XW97H/logo.png" group-title="Azərbaycan",NAXÇIVAN TV ᵏᵃᵑᵏᵃ
+http://str.yodacdn.net/ntv/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/Bny2M3B9/logo-apatv.png" group-title="Azərbaycan",APA TV ᵏᵃᵑᵏᵃ
+http://rtmp.apa.tv/@pagroup!23.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/C5Cr0Zxt/Kanal-35-loqo.png" group-title="Azərbaycan",KANAL 35 ᵏᵃᵑᵏᵃ
+http://str.yodacdn.net/kanal35/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/Y0FB5zLk/In-Shot-20250504-164130011.png" group-title="Azərbaycan",VIP HD ᵏᵃᵑᵏᵃ
+http://pbuo15m2.tvclub.xyz/iptv/MBXSSW866XM73W/16052/index.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/cCPh2BsY/Kanal-S-2022.png" group-title="Azərbaycan",KANAL S ᵏᵃᵑᵏᵃ
+http://135.181.115.81:8000/play/a04r/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/Y0kvx1Pj/logo-7sz-XRi4-1.png" group-title="Azərbaycan",AGRO TV ᵏᵃᵑᵏᵃ
+http://pars.viper01.xyz:8080/play/live.php?mac=00:1a:79:54:fc:b1&stream=563726&extension=ts
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/283RpW3X/Logo-gold-font.png" group-title="Azərbaycan",SHOW PLUS ᵏᵃᑕᵏᵃ
+https://ssh101.bozztv.com/ssh101/showplus/chunks.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/507VS3GP/In-Shot-20250425-200955809.png" group-title="Azərbaycan",HINDI MUSIC ᵏᵃᑕᵏᵃ
+https://fl1001.bozztv.com/ushba-t4/tracks-v1a1/mono.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/6prVYgqM/tmbtaz-png.png" group-title="Azərbaycan",TMB ᵏᵃᑕᵏᵃ
+http://135.181.115.81:8000/play/a031/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/NfmDy569/2018.png" group-title="Azərbaycan",VOSTOK TV ᵏᵃᑕᵏᵃ
+http://65.21.85.175:8000/play/a032/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/WpQsbxbw/S-hiyy-TV.png" group-title="Azərbaycan",STV ᵏᵃᑕᵏᵃ
+http://135.181.115.81:8000/play/a04x/index.m3u8?token=livetv
+#EXTINF:-1 tvg-logo="http://assets.tvcdn.net/debb1b49-4809-413b-8418-6c176181a1d6.png" group-title="Azərbaycan",AZSTAR TV ᵏᵃᑕᵏᵃ
+http://live.azstartv.com/azstar/azstar_1080p/playlist.m3u8
+#EXTINF:-1 tvg-logo="https://i.postimg.cc/SKTndbFF/In-Shot-20250209-203240269.png" group-title="Azərbaycan",FTV ᵏᵃᑕᵏᵃ
+https://vsrv1.az-streamingserver.com:3833/live/ofhwiwudlive.m3u8
+#EXTINF:-1 tv
 </head>
 <body>
     <div class="container">
