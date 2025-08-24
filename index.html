@@ -1,40 +1,81 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-    <meta charset="UTF-8">
-    <title>Messenger - Qeydiyyat və Çat</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #e4e7ec;
-            margin: 0;
-            padding: 0;
+  <meta charset="UTF-8">
+  <title>Mobil Nömrə ilə Qeydiyyat və Əlaqə</title>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; background: #f7f7f7;}
+    .container { background: #fff; padding: 24px; border-radius: 10px; max-width: 400px; margin: auto; box-shadow: 0 2px 8px #ccc;}
+    h2 { color: #0077aa; }
+    input { width: 100%; padding: 8px; margin: 8px 0 12px 0; border: 1px solid #ccc; border-radius: 4px;}
+    button { background: #0077aa; color: #fff; padding: 10px 18px; border: none; border-radius: 4px; cursor: pointer;}
+    button:hover { background: #005577;}
+    .success { color: green;}
+    .error { color: red;}
+    .section { margin-bottom: 36px;}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="section">
+      <h2>Mobil nömrə ilə qeydiyyat</h2>
+      <input id="registerPhone" placeholder="Nömrənizi daxil edin (məs: +994XXXXXXXXX)">
+      <button onclick="sendOtp()">SMS ilə OTP göndər</button>
+      <input id="registerOtp" placeholder="OTP kodunu daxil edin">
+      <button onclick="verifyOtp()">OTP-ni təsdiqlə</button>
+      <div id="registerStatus"></div>
+    </div>
+    <div class="section">
+      <h2>İstifadəçi ilə əlaqə</h2>
+      <input id="searchPhone" placeholder="Əlaqə saxlamaq istədiyiniz nömrə">
+      <button onclick="findUser()">Axtar</button>
+      <div id="userStatus"></div>
+    </div>
+  </div>
+  <script>
+    async function sendOtp() {
+      const phone = document.getElementById('registerPhone').value;
+      if (!phone) return;
+      try {
+        await axios.post('http://localhost:3001/api/send-otp', { phone });
+        document.getElementById('registerStatus').innerHTML = '<span class="success">OTP göndərildi!</span>';
+      } catch (e) {
+        document.getElementById('registerStatus').innerHTML = '<span class="error">Xəta baş verdi: '+(e.response?.data?.error || e.message)+'</span>';
+      }
+    }
+
+    async function verifyOtp() {
+      const phone = document.getElementById('registerPhone').value;
+      const otp = document.getElementById('registerOtp').value;
+      if (!otp || !phone) return;
+      try {
+        const res = await axios.post('http://localhost:3001/api/verify-otp', { phone, otp });
+        if (res.data.success) {
+          document.getElementById('registerStatus').innerHTML = '<span class="success">Qeydiyyat tamamlandı!</span>';
+        } else {
+          document.getElementById('registerStatus').innerHTML = '<span class="error">OTP səhvdir!</span>';
         }
-        .container {
-            width: 370px;
-            margin: 40px auto 0 auto;
-            background: #fff;
-            padding: 28px 35px 20px 35px;
-            box-shadow: 0 0 12px #bbb;
-            border-radius: 9px;
-        }
-        h2 {
-            text-align: center;
-            color: #284e8f;
-        }
-        .input-group {
-            margin: 13px 0;
-        }
-        .input-group label {
-            font-size: 15px;
-            color: #555;
-        }
-        .input-group input {
-            width: 100%;
-            padding: 10px;
-            margin-top: 6px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+      } catch (e) {
+        document.getElementById('registerStatus').innerHTML = '<span class="error">Xəta baş verdi: '+(e.response?.data?.error || e.message)+'</span>';
+      }
+    }
+
+    async function findUser() {
+      const phone = document.getElementById('searchPhone').value;
+      if (!phone) return;
+      try {
+        const res = await axios.get('http://localhost:3001/api/user/' + phone);
+        const user = res.data.user;
+        document.getElementById('userStatus').innerHTML =
+          `<span class="success">İstifadəçi tapıldı: ${user.phone} <br>Status: ${user.online ? "Online" : "Offline"}</span>`;
+      } catch (e) {
+        document.getElementById('userStatus').innerHTML = '<span class="error">İstifadəçi tapılmadı!</span>';
+      }
+    }
+  </script>
+</body>
+</html>            border-radius: 5px;
         }
         .register-btn, .chat-btn {
             width: 100%;
