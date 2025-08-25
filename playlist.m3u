@@ -1,5 +1,5 @@
 #EXTM3U
-#EXTINF:-1 tvg-name="CBC Sport" tvg-id="" tvg-logo="https://tv.canlitvme.com/poster/cbc-sport.png" group-title="Azerbaycan",CBC Spor
+#EXTINF:-1 tvg-name="CC Sport" tvg-id="" tvg-logo="https://tv.canlitvme.com/poster/cbc-sport.png" group-title="Azerbaycan",CBC Spor
 https://raw.githubusercontent.com/UzunMuhalefet/streams/refs/heads/main/myvideo-az/atv-azad.m3u8
 #EXTINF:-1 tvg-name="İdman Tv" tvg-id="" tvg-logo="https://tv.canlitvme.com/poster/idman-tv.png" group-title="Azerbaycan",İdman Tv
 https://canlitvme.ismailturret.workers.dev/idmantv.m3u8
