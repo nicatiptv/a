@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="az">
+<head>
+  <meta charset="utf-8">
+  <title>Azərbaycan Macərası</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    html,body{height:100%;margin:0;font-family:Inter,Arial,Helvetica,sans-serif;background:#0b1220;color:#fff;display:flex;align-items:center;justify-content:center}
+    #gameWrap{width:900px;max-width:95vw;background:#071028;border-radius:12px;box-shadow:0 10px 30px rgba(0,0,0,.6);overflow:hidden}
+    header{display:flex;justify-content:space-between;align-items:center;padding:10px 16px;background:linear-gradient(90deg,#05223a,#083452);font-weight:600}
+    #hud {display:flex;gap:12px;align-items:center}
+    .badge{background:rgba(255,255,255,0.06);padding:6px 10px;border-radius:8px;font-size:14px}
+    #canvas{display:block;background:#96c8ff linear-gradient(#8ec3ff,#9fd6ff);width:100%;height:600px}
+    #controls{display:flex;gap:8px;align-items:center}
+    button{background:#ffc107;border:none;padding:6px 10px;border-radius:8px;font-weight:700;cursor:pointer}
+    button:active{transform:scale(.98)}
+    .center{display:flex;align-items:center;gap:8px}
+    footer{padding:8px 12px;background:#04233a;font-size:13px;text-align:center}
+    @media (max-width:420px){#canvas{height:520px}}
+  </style>
+</head>
+<body>
+  <div id="gameWrap">
+    <header>
+      <div id="hud">
+        <div class="badge">Bal: <span id="score">0</span></div>
+        <div class="badge">Həyat: <span id="lives">3</span></div>
+        <div class="badge">Sürət: <span id="speed">1</span></div>
+      </div>
+      <div id="controls">
+        <button id="startBtn">Başla</button>
+        <button id="restartBtn">Yenidən</button>
+      </div>
+    </header>
+
+    <canvas id="canvas" width="900" height="600"></canvas>
+    <footer>Azərbaycan Macərası — Püskürən narları topla! (← → və ya ekranı döy)</footer>
+  </div>
+
+<script>
+/* Sadə canvas oyunu: oyunçu bayraq şəklində xalqı idarə edir və düşən n
